@@ -1,12 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://d37miegg8k42b"]
+[gd_scene load_steps=5 format=3 uid="uid://d37miegg8k42b"]
 
 [ext_resource type="PackedScene" uid="uid://dnrx1cp8p8huy" path="res://entities/player/player.tscn" id="1_6xmxd"]
+[ext_resource type="Script" uid="uid://biyyc22lw3smp" path="res://world/world.gd" id="1_h5o24"]
 [ext_resource type="PackedScene" uid="uid://b77jx6vgrjkhp" path="res://world/day_night_cycle/day_night_cycle.tscn" id="2_tcf2h"]
+[ext_resource type="PackedScene" uid="uid://devxha63j6w0k" path="res://entities/enemies/base/base_enemy.tscn" id="3_mmdvd"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_h5o24")
 
 [node name="Player" parent="." instance=ExtResource("1_6xmxd")]
 position = Vector2(576, 327)
+
+[node name="BaseEnemy" parent="." instance=ExtResource("3_mmdvd")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

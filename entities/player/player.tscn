@@ -7,6 +7,7 @@
 size = Vector2(128, 128)
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 0
 script = ExtResource("1_abrql")
 
 [node name="Icon" type="Sprite2D" parent="."]
