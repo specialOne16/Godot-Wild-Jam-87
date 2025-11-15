@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://d37miegg8k42b"]
+[gd_scene load_steps=3 format=3 uid="uid://d37miegg8k42b"]
 
 [ext_resource type="PackedScene" uid="uid://dnrx1cp8p8huy" path="res://entities/player/player.tscn" id="1_6xmxd"]
+[ext_resource type="PackedScene" uid="uid://b77jx6vgrjkhp" path="res://world/day_night_cycle/day_night_cycle.tscn" id="2_tcf2h"]
 
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_6xmxd")]
 position = Vector2(576, 327)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DayNightCycle" parent="CanvasLayer" instance=ExtResource("2_tcf2h")]
