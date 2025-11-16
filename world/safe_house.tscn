@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://gayf4urdymll"]
+
+[ext_resource type="Script" uid="uid://3ppxjxpgt67l" path="res://world/safe_house.gd" id="1_3hfbp"]
+[ext_resource type="Texture2D" uid="uid://dwcew2co30q1l" path="res://icon.svg" id="2_10ksu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsgcp"]
+size = Vector2(65, 64)
+
+[node name="safe_house" type="Area2D"]
+script = ExtResource("1_3hfbp")
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(3.4602234, 0.48468992, 2.421782, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_10ksu")
+
+[node name="safeArea" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_wsgcp")
+
+[connection signal="child_entered_tree" from="safeArea" to="." method="_on_safe_area_child_entered_tree"]
+[connection signal="child_exiting_tree" from="safeArea" to="." method="_on_safe_area_child_exiting_tree"]

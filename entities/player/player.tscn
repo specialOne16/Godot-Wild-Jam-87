@@ -11,7 +11,9 @@ collision_mask = 0
 script = ExtResource("1_abrql")
 
 [node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_sglur")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_bls4j")
