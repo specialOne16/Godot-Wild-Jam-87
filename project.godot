@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+event_bus="*res://globals/event_bus.gd"
 ResourceManager="*res://globals/resource_manager.gd"
 
 [input]
