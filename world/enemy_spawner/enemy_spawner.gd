@@ -7,9 +7,6 @@ const BASE_ENEMY = preload("uid://devxha63j6w0k")
 
 @export var player: Player
 @onready var spawn_timer: Timer = $SpawnTimer
-#@onready var path_1: Path2D = %Path1
-#@onready var path_follow_1: PathFollow2D = %PathFollow1
-
 
 func _ready() -> void:
 	spawn_timer.start()

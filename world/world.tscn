@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d37miegg8k42b"]
+[gd_scene load_steps=6 format=3 uid="uid://d37miegg8k42b"]
 
 [ext_resource type="PackedScene" uid="uid://dnrx1cp8p8huy" path="res://entities/player/player.tscn" id="1_6xmxd"]
 [ext_resource type="Script" uid="uid://biyyc22lw3smp" path="res://world/world.gd" id="1_h5o24"]
 [ext_resource type="PackedScene" uid="uid://b77jx6vgrjkhp" path="res://world/day_night_cycle/day_night_cycle.tscn" id="2_tcf2h"]
 [ext_resource type="PackedScene" uid="uid://devxha63j6w0k" path="res://entities/enemies/base/base_enemy.tscn" id="3_mmdvd"]
 [ext_resource type="PackedScene" uid="uid://mh1quh77s5gw" path="res://world/enemy_spawner/enemy_spawner.tscn" id="4_mmdvd"]
-[ext_resource type="PackedScene" uid="uid://gayf4urdymll" path="res://world/safe_house.tscn" id="6_fn3g3"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_h5o24")
@@ -15,25 +14,22 @@ unique_name_in_owner = true
 
 [node name="Player" parent="." instance=ExtResource("1_6xmxd")]
 unique_name_in_owner = true
-position = Vector2(706, 151)
+position = Vector2(876, 280)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="DayNightCycle" parent="CanvasLayer" instance=ExtResource("2_tcf2h")]
 metadata/_edit_lock_ = true
 
-[node name="safe_house" parent="." instance=ExtResource("6_fn3g3")]
-position = Vector2(885, 235)
-scale = Vector2(2, 2)
-
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_mmdvd")]
-position = Vector2(284, -41)
+position = Vector2(185, 121)
 player = NodePath("../Player")
 
 [node name="EnemySpawner2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_mmdvd")]
-position = Vector2(-62, 546)
+position = Vector2(172, 556)
 player = NodePath("../Player")
 
 [node name="EnemySpawner3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_mmdvd")]
-position = Vector2(1208, 641)
+position = Vector2(1003, 586)
 player = NodePath("../Player")

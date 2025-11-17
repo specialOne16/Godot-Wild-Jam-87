@@ -9,3 +9,6 @@ func _process(delta: float) -> void:
 	if player and event_bus.enemy_spawner == true:
 		global_position += global_position.direction_to(player.global_position) * move_speed * delta;
 		look_at(player.global_position)
+
+func damaged():
+	queue_free()

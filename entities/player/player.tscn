@@ -19,5 +19,8 @@ texture = ExtResource("2_sglur")
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_bls4j")
 
-[node name="AttackComponent" parent="." instance=ExtResource("3_sglur")]
-scale = Vector2(10, 10)
+[node name="CraftAttack" parent="." instance=ExtResource("3_sglur")]
+scale = Vector2(5, 5)
+
+[node name="ZombieAttack" parent="." instance=ExtResource("3_sglur")]
+scale = Vector2(20, 20)
