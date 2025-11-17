@@ -1,16 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://57eyrc8g8h6g"]
+[gd_scene load_steps=5 format=3 uid="uid://57eyrc8g8h6g"]
 
 [ext_resource type="PackedScene" uid="uid://cqfsvslvri855" path="res://world/resources/tree/tree.tscn" id="1_pn46v"]
 [ext_resource type="PackedScene" uid="uid://dnrx1cp8p8huy" path="res://entities/player/player.tscn" id="2_id5sv"]
 [ext_resource type="PackedScene" uid="uid://du0ivfuf4ixnq" path="res://world/resources/resource_gui.tscn" id="3_id5sv"]
+[ext_resource type="PackedScene" uid="uid://c3aa1scxrd44c" path="res://world/building/builder.tscn" id="3_tjtri"]
 
 [node name="TestCraft" type="Node2D"]
 
 [node name="Tree" parent="." instance=ExtResource("1_pn46v")]
 position = Vector2(160, 126)
 
+[node name="Tree2" parent="." instance=ExtResource("1_pn46v")]
+position = Vector2(492, 101)
+
+[node name="Tree3" parent="." instance=ExtResource("1_pn46v")]
+position = Vector2(238, 374)
+
+[node name="Tree4" parent="." instance=ExtResource("1_pn46v")]
+position = Vector2(797, 152)
+
+[node name="Tree5" parent="." instance=ExtResource("1_pn46v")]
+position = Vector2(818, 431)
+
 [node name="Player" parent="." instance=ExtResource("2_id5sv")]
 position = Vector2(578, 318)
+
+[node name="Builder" parent="." instance=ExtResource("3_tjtri")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
