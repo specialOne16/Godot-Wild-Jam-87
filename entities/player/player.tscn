@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnrx1cp8p8huy"]
+[gd_scene load_steps=5 format=3 uid="uid://dnrx1cp8p8huy"]
 
 [ext_resource type="Script" uid="uid://ce4ya7xl5rj20" path="res://entities/player/player.gd" id="1_abrql"]
 [ext_resource type="Texture2D" uid="uid://dwcew2co30q1l" path="res://icon.svg" id="2_sglur"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bls4j"]
 size = Vector2(128, 128)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_abrql"]
+radius = 225.0089
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 0
@@ -17,3 +20,8 @@ texture = ExtResource("2_sglur")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_bls4j")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="enemyDetection" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_abrql")
