@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://du0ivfuf4ixnq"]
+
+[ext_resource type="Script" uid="uid://1tk7212r2xxa" path="res://world/resources/resource_gui.gd" id="1_kiumf"]
+
+[node name="ResourceGui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kiumf")
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -180.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = 79.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="WoodContainer" type="HBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="WoodResource" type="Label" parent="Panel/MarginContainer/WoodContainer"]
+layout_mode = 2
+text = "Wood"
+
+[node name="WoodValue" type="Label" parent="Panel/MarginContainer/WoodContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
