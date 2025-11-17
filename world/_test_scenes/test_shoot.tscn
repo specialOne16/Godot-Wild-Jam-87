@@ -7,6 +7,7 @@
 [node name="TestShoot" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("2_844po")]
+unique_name_in_owner = true
 position = Vector2(815, 314)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -15,7 +16,7 @@ visible = false
 [node name="DayNightCycle" parent="CanvasLayer" instance=ExtResource("3_4y3cs")]
 morning_timer_time = 1.0
 dusk_timer_time = 1.0
+night_timer_time = 50.0
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_df015")]
-position = Vector2(63, 341)
 player = NodePath("../Player")

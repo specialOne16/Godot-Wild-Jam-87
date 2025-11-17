@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ZombieData" load_steps=2 format=3 uid="uid://dd6b64bybbe8m"]
+
+[ext_resource type="Script" uid="uid://da4kgm6q1v4hi" path="res://entities/enemies/zombie1.gd" id="1_f8rdj"]
+
+[resource]
+script = ExtResource("1_f8rdj")
+metadata/_custom_type_script = "uid://da4kgm6q1v4hi"

@@ -10,7 +10,6 @@ radius = 8.062258
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("1_2qgwa")
-speed = 250
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
@@ -21,3 +20,4 @@ shape = SubResource("CircleShape2D_o27as")
 
 [node name="bullet_alive" type="Timer" parent="."]
 unique_name_in_owner = true
+wait_time = 10.0
