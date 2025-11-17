@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://57eyrc8g8h6g"]
+
+[ext_resource type="PackedScene" uid="uid://cqfsvslvri855" path="res://world/resources/tree/tree.tscn" id="1_pn46v"]
+[ext_resource type="PackedScene" uid="uid://dnrx1cp8p8huy" path="res://entities/player/player.tscn" id="2_id5sv"]
+[ext_resource type="PackedScene" uid="uid://du0ivfuf4ixnq" path="res://world/resources/resource_gui.tscn" id="3_id5sv"]
+
+[node name="TestCraft" type="Node2D"]
+
+[node name="Tree" parent="." instance=ExtResource("1_pn46v")]
+position = Vector2(160, 126)
+
+[node name="Player" parent="." instance=ExtResource("2_id5sv")]
+position = Vector2(578, 318)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ResourceGui" parent="CanvasLayer" instance=ExtResource("3_id5sv")]
