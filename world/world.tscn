@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d37miegg8k42b"]
+[gd_scene load_steps=7 format=3 uid="uid://d37miegg8k42b"]
 
 [ext_resource type="PackedScene" uid="uid://dnrx1cp8p8huy" path="res://entities/player/player.tscn" id="1_6xmxd"]
 [ext_resource type="Script" uid="uid://biyyc22lw3smp" path="res://world/world.gd" id="1_h5o24"]
@@ -6,23 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://devxha63j6w0k" path="res://entities/enemies/base/base_enemy.tscn" id="3_mmdvd"]
 [ext_resource type="PackedScene" uid="uid://mh1quh77s5gw" path="res://world/enemy_spawner/enemy_spawner.tscn" id="4_mmdvd"]
 [ext_resource type="PackedScene" uid="uid://gayf4urdymll" path="res://world/safe_house.tscn" id="6_fn3g3"]
-[ext_resource type="Script" uid="uid://dcgqs18j6orx4" path="res://world/path_follow_2d.gd" id="6_sc4t8"]
-
-[sub_resource type="Curve2D" id="Curve2D_fn3g3"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 120, 60, 0, -99.825005, 0, 99.825005, -5, 179, -109.753, 126.641, 109.753, -126.641, 151, 244, 89, -118, -89, 118, 293, 244, -230.26302, 2.6620002, 230.26302, -2.6620002, 217, 561, -139.599, -22.748016, 139.599, 22.748016, 479, 244, -9, -74, 9, 74, 519, 482, -102.48701, -7.9860005, 102.48701, 7.9860005, 568, 614, -8, 101, 8, -101, 761, 484, 0, 0, 0, 0, 843, 142)
-}
-point_count = 10
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_h5o24")
+
+[node name="BaseEnemy" parent="." instance=ExtResource("3_mmdvd")]
+unique_name_in_owner = true
 
 [node name="Player" parent="." instance=ExtResource("1_6xmxd")]
 unique_name_in_owner = true
 position = Vector2(706, 151)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="DayNightCycle" parent="CanvasLayer" instance=ExtResource("2_tcf2h")]
 metadata/_edit_lock_ = true
@@ -32,26 +27,13 @@ position = Vector2(885, 235)
 scale = Vector2(2, 2)
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_mmdvd")]
-position = Vector2(253.82605, 126.5894)
-rotation = 1.8199377
-scale = Vector2(1.0434002, 1.1319476)
-skew = -0.040066004
+position = Vector2(284, -41)
 player = NodePath("../Player")
 
-[node name="Path1" type="Path2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(99.68396, 14.712834)
-scale = Vector2(1.1367925, 1.0381194)
-curve = SubResource("Curve2D_fn3g3")
+[node name="EnemySpawner2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_mmdvd")]
+position = Vector2(-62, 546)
+player = NodePath("../Player")
 
-[node name="PathFollow1" type="PathFollow2D" parent="Path1"]
-unique_name_in_owner = true
-position = Vector2(120, 60)
-rotation = 2.9893792
-script = ExtResource("6_sc4t8")
-
-[node name="BaseEnemy" parent="Path1/PathFollow1" instance=ExtResource("3_mmdvd")]
-unique_name_in_owner = true
-position = Vector2(-17.26966, 2.7854347)
-rotation = -1.19029
-scale = Vector2(1.0000002, 1.0000002)
+[node name="EnemySpawner3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_mmdvd")]
+position = Vector2(1208, 641)
+player = NodePath("../Player")
