@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ce4ya7xl5rj20" path="res://entities/player/player.gd" id="1_abrql"]
 [ext_resource type="Texture2D" uid="uid://dwcew2co30q1l" path="res://icon.svg" id="2_sglur"]
+[ext_resource type="PackedScene" uid="uid://b5c5eran3em6c" path="res://entities/player/components/attack.tscn" id="3_sglur"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bls4j"]
 size = Vector2(128, 128)
@@ -10,7 +11,7 @@ size = Vector2(128, 128)
 radius = 225.0089
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 0
+collision_mask = 12
 script = ExtResource("1_abrql")
 
 [node name="Icon" type="Sprite2D" parent="."]
@@ -25,3 +26,5 @@ shape = SubResource("RectangleShape2D_bls4j")
 
 [node name="enemyDetection" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_abrql")
+[node name="AttackComponent" parent="." instance=ExtResource("3_sglur")]
+scale = Vector2(10, 10)
