@@ -16,8 +16,6 @@ func _ready() -> void:
 	dusk_overlay.visible = false
 	timer_init()
 	toggle_morning_overlay()
-	#cycle_timer.start()
-	#cycle_timer.timeout.connect(toggle_morning_overlay)
 
 func timer_init():
 	morning_timer.wait_time = morning_timer_time
