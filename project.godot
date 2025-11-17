@@ -68,6 +68,7 @@ confirm_build={
 2d_physics/layer_2="Enemy"
 2d_physics/layer_3="Resource"
 2d_physics/layer_4="Building"
+2d_physics/layer_5="projectiles"
 
 [rendering]
 
