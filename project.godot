@@ -12,13 +12,17 @@ config_version=5
 
 config/name="Godot Wild Jam 87"
 run/main_scene="uid://d37miegg8k42b"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 event_bus="*res://globals/event_bus.gd"
 ResourceManager="*res://globals/resource_manager.gd"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [input]
 
