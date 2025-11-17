@@ -10,7 +10,8 @@ class_name Player
 @export var bulletScene : PackedScene = preload("res://entities/player/bullet.tscn")
 
 var is_enemy_inside : bool = false
-var enemy_rotation : float
+var enemy_direction : Vector2
+var enemy_rotation: float
 var enemy_body : Node2D
 
 func _ready() -> void:
@@ -37,13 +38,13 @@ func get_input():
 func _physics_process(_delta):
 	get_input()
 	move_and_slide()
-	gun.look_at(get_global_mouse_position())
 	if is_enemy_inside == true:
-		enemy_rotation = enemy_body.rotation
+		enemy_direction = (enemy_body.global_position - gun.global_position).normalized()
+		gun.look_at(enemy_body.global_position)
 
 func fire_bullet() -> void:
 	var bullet := bulletScene.instantiate()
 	#bullet.direction = (bullet_spawn.global_position - global_position).normalized()
-	bullet.direction = Vector2.LEFT.rotated(enemy_rotation)
+	bullet.direction = enemy_direction.normalized()
 	bullet.global_position = bullet_spawn.global_position
 	get_tree().current_scene.call_deferred("add_child",bullet)

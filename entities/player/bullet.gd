@@ -1,13 +1,26 @@
 extends Area2D
 
+@onready var bullet_alive: Timer = %bullet_alive
+
 @export var speed := 800
 var direction := Vector2.ZERO
 
 func _ready():
-	# Move in direction of its rotation (set by player)
-	#direction = Vector2.RIGHT.rotated(rotation)
+	bullet_start()
+	bullet_alive.connect("timeout", destroy_bullet)
+	self.connect("body_entered", _on_body_entered)
 	pass
 
+func bullet_start() -> void:
+	bullet_alive.start()
 
+func destroy_bullet() -> void:
+	queue_free()
+	
 func _physics_process(delta):
 	position += direction * speed * delta
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.has_method("damaged"):
+		body.damaged(ResourceManager.player_weapon_damage)
+		queue_free()
