@@ -69,6 +69,7 @@ confirm_build={
 2d_physics/layer_3="Resource"
 2d_physics/layer_4="Building"
 2d_physics/layer_5="PlayerBullet"
+2d_physics/layer_6="EmemyBullets"
 
 [rendering]
 
