@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnrx1cp8p8huy"]
+[gd_scene load_steps=9 format=3 uid="uid://dnrx1cp8p8huy"]
 
 [ext_resource type="Script" uid="uid://ce4ya7xl5rj20" path="res://entities/player/player.gd" id="1_abrql"]
 [ext_resource type="Texture2D" uid="uid://dwcew2co30q1l" path="res://icon.svg" id="2_sglur"]
@@ -7,11 +7,23 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bls4j"]
 size = Vector2(128, 128)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_abrql"]
-radius = 225.0089
+[sub_resource type="Gradient" id="Gradient_sglur"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bls4j"]
+gradient = SubResource("Gradient_sglur")
+width = 20
+height = 5
+
+[sub_resource type="Gradient" id="Gradient_bls4j"]
+offsets = PackedFloat32Array(0.43571427)
+colors = PackedColorArray(0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fkugw"]
+gradient = SubResource("Gradient_bls4j")
+height = 3
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 12
+collision_mask = 14
 script = ExtResource("1_abrql")
 
 [node name="Icon" type="Sprite2D" parent="."]
@@ -22,9 +34,45 @@ texture = ExtResource("2_sglur")
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_bls4j")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="CraftAttack" parent="." instance=ExtResource("3_sglur")]
+scale = Vector2(5, 5)
 
-[node name="enemyDetection" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_abrql")
-[node name="AttackComponent" parent="." instance=ExtResource("3_sglur")]
-scale = Vector2(10, 10)
+[node name="ZombieAttack" parent="." instance=ExtResource("3_sglur")]
+unique_name_in_owner = true
+scale = Vector2(50, 50)
+collision_layer = 2
+collision_mask = 6
+
+[node name="bulletInterval" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.5
+
+[node name="gun" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = SubResource("GradientTexture2D_bls4j")
+offset = Vector2(44, 0)
+
+[node name="bulletspawn" type="Marker2D" parent="gun"]
+unique_name_in_owner = true
+position = Vector2(54, 0)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -32.0
+offset_top = -38.0
+offset_right = 32.0
+offset_bottom = -34.0
+
+[node name="PlayerHPBar" type="TextureProgressBar" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_progress = SubResource("GradientTexture2D_fkugw")
+
+[connection signal="body_entered" from="ZombieAttack" to="ZombieAttack" method="_on_body_entered"]
+[connection signal="body_exited" from="ZombieAttack" to="ZombieAttack" method="_on_body_exited"]
