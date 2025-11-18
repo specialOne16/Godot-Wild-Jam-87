@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8v3hshx5sa78"]
+
+[ext_resource type="Script" uid="uid://eibcl33k5p6t" path="res://entities/enemies/drops.gd" id="1_ng4oa"]
+[ext_resource type="Texture2D" uid="uid://dy2rcjauxaciv" path="res://Art/drops.png" id="1_upv5o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ng4oa"]
+radius = 146.27713
+
+[node name="Drops" type="Area2D"]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_ng4oa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_upv5o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ng4oa")
