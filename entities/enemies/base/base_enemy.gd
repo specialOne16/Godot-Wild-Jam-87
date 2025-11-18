@@ -29,7 +29,6 @@ func stop_damage_timer(body: Node2D) -> void:
 	
 func player_damage() -> void:
 	player_data.player_health -= zombie_data.zombie_damage
-	print(player_data.player_health)
 
 func _process(delta: float) -> void:
 	# TODO : when day arrives need to either stop zombies attacking player.

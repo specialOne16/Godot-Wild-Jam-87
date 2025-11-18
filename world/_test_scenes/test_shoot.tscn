@@ -19,4 +19,9 @@ dusk_timer_time = 1.0
 night_timer_time = 50.0
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_df015")]
+position = Vector2(96, 94)
+player = NodePath("../Player")
+
+[node name="EnemySpawner2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_df015")]
+position = Vector2(94, 504)
 player = NodePath("../Player")

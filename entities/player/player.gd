@@ -13,9 +13,9 @@ var bulletScene : PackedScene = preload("uid://c0xqahtmvo8kf")
 var player_data := ResourceManager.player_data_rm
 
 var is_enemy_inside : bool = false
-var enemy_direction : Vector2
-var enemy_rotation: float
-var enemy_body : Node2D
+var nearest_enemy_direction : Vector2
+var nearest_enemy_rotation: float
+var nearest_enemy_body : Node2D
 var enemies : Array = ResourceManager.enemy_list
 
 func _ready() -> void:
@@ -27,15 +27,15 @@ func _process(_delta: float) -> void:
 		queue_free()
 	
 	if enemies.is_empty() == false:
-		enemy_body = get_nearest_enemy()
+		nearest_enemy_body = get_nearest_enemy()
 	
 	if enemies.is_empty():
 		is_enemy_inside = false
 		bullet_interval.stop()
 		
 	if is_enemy_inside == true:
-		enemy_direction = (enemy_body.global_position - gun.global_position).normalized()
-		gun.look_at(enemy_body.global_position)
+		nearest_enemy_direction = (nearest_enemy_body.global_position - gun.global_position).normalized()
+		gun.look_at(nearest_enemy_body.global_position)
 
 func connect_signals() -> void:
 	zombie_attack.zombie_entered.connect(enemy_inside)
@@ -63,8 +63,7 @@ func _physics_process(_delta):
 
 func fire_bullet() -> void:
 	var bullet := bulletScene.instantiate()
-	#bullet.direction = (bullet_spawn.global_position - global_position).normalized()
-	bullet.direction = enemy_direction.normalized()
+	bullet.direction = nearest_enemy_direction.normalized()
 	bullet.global_position = bullet_spawn.global_position
 	get_tree().current_scene.call_deferred("add_child",bullet)
 

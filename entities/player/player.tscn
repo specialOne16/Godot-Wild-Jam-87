@@ -58,6 +58,7 @@ position = Vector2(54, 0)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
+anchors_preset = 0
 offset_left = -32.0
 offset_top = -38.0
 offset_right = 32.0
