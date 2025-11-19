@@ -6,15 +6,16 @@ class_name EnemySpawner
 const BASE_ENEMY = preload("uid://devxha63j6w0k")
 
 @export var player: Player
-@onready var spawn_timer: Timer = $SpawnTimer
+@onready var enemy_spawn_timer: Timer = %EnemySpawnTimer
 
 
 func _ready() -> void:
-	spawn_timer.start()
-	spawn_timer.timeout.connect(spawn_enemy)
+	enemy_spawn_timer.start()
+	enemy_spawn_timer.timeout.connect(spawn_enemy)
 
 func spawn_enemy():
-	if event_bus.enemy_spawner == true:
+	# Always check valid instance if you want to check object in tree or not after freeing that object
+	if event_bus.enemy_spawner == true and is_instance_valid(player) and player.is_inside_tree():
 		var enemy: BaseEnemy = BASE_ENEMY.instantiate()
 		enemy.move_speed = spawned_move_speed
 		enemy.player = player

@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsaimtmaf0bmf"]
+
+[ext_resource type="PackedScene" uid="uid://dnrx1cp8p8huy" path="res://entities/player/player.tscn" id="2_844po"]
+[ext_resource type="PackedScene" uid="uid://mh1quh77s5gw" path="res://world/enemy_spawner/enemy_spawner.tscn" id="2_df015"]
+[ext_resource type="PackedScene" uid="uid://b77jx6vgrjkhp" path="res://world/day_night_cycle/day_night_cycle.tscn" id="3_4y3cs"]
+
+[node name="TestShoot" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_844po")]
+unique_name_in_owner = true
+position = Vector2(815, 314)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="DayNightCycle" parent="CanvasLayer" instance=ExtResource("3_4y3cs")]
+morning_timer_time = 1.0
+dusk_timer_time = 1.0
+night_timer_time = 50.0
+
+[node name="EnemySpawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_df015")]
+position = Vector2(96, 94)
+player = NodePath("../Player")
+
+[node name="EnemySpawner2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_df015")]
+position = Vector2(94, 504)
+player = NodePath("../Player")
