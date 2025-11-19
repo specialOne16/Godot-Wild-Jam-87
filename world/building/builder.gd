@@ -14,7 +14,7 @@ func _process(_delta: float) -> void:
 		building_guide.position = (mouse / Wall.size).round() * Wall.size
 		
 		if Input.is_action_just_pressed("confirm_build"):
-			ResourceManager.spend_wood(Wall.wood_cost)
+			ResourceManager.current_wood -= Wall.wood_cost
 			
 			var instance: Node2D = building_guide_data.scene.instantiate()
 			instance.position = building_guide.position
