@@ -8,6 +8,8 @@ class_name BaseEnemy
 @onready var hp_bar: TextureProgressBar = %enemyHpBar
 @onready var zombie_damage_timer: Timer = %ZombieDamageTimer
 @onready var zombie_range: Area2D = %ZombieRange
+const DROPS = preload("uid://b8v3hshx5sa78")
+
 
 var zombie_data := ResourceManager.zombie_data_rm
 var player_data := ResourceManager.player_data_rm
@@ -41,5 +43,19 @@ func damaged(damage: float) -> void:
 	hp_bar.value = enemy_health
 
 	if enemy_health <= 0:
+		var item = zombie_data.drop_count_ratio[randi() % zombie_data.drop_count_ratio.size()]
+		
 		queue_free()
+		for i in range(item):
+			var base_dir = global_position.direction_to(player.global_position)
+
+			# Add small random angle so drops don't overlap
+			var random_angle = randf_range(-0.5, 0.5)   # ~±30°
+			var final_dir = base_dir.rotated(random_angle)
+			var distance = randf_range(60, 100)          # how far to throw
+			
+			var drops := DROPS.instantiate()
+			drops.global_position = self.global_position + final_dir * distance
+			get_tree().current_scene.call_deferred("add_child",drops)
+		
 		ResourceManager.enemy_list.erase(self)

@@ -3,7 +3,7 @@ class_name Bullet
 
 @onready var bullet_alive: Timer = %bullet_alive
 
-@export var speed := 800
+@export var bullet_speed := 800
 
 var direction := Vector2.ZERO
 var player_data := ResourceManager.player_data_rm
@@ -21,7 +21,7 @@ func destroy_bullet() -> void:
 	queue_free()
 	
 func _physics_process(delta):
-	position += direction * speed * delta
+	position += direction * bullet_speed * delta
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("damaged"):

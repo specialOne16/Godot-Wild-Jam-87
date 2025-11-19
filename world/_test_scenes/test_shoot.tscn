@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsaimtmaf0bmf"]
+[gd_scene load_steps=5 format=3 uid="uid://dsaimtmaf0bmf"]
 
 [ext_resource type="PackedScene" uid="uid://dnrx1cp8p8huy" path="res://entities/player/player.tscn" id="2_844po"]
 [ext_resource type="PackedScene" uid="uid://mh1quh77s5gw" path="res://world/enemy_spawner/enemy_spawner.tscn" id="2_df015"]
 [ext_resource type="PackedScene" uid="uid://b77jx6vgrjkhp" path="res://world/day_night_cycle/day_night_cycle.tscn" id="3_4y3cs"]
+[ext_resource type="PackedScene" uid="uid://du0ivfuf4ixnq" path="res://world/resources/resource_gui.tscn" id="4_cgumk"]
 
 [node name="TestShoot" type="Node2D"]
 
@@ -25,3 +26,7 @@ player = NodePath("../Player")
 [node name="EnemySpawner2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_df015")]
 position = Vector2(94, 504)
 player = NodePath("../Player")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="ResourceGui" parent="CanvasLayer2" instance=ExtResource("4_cgumk")]
