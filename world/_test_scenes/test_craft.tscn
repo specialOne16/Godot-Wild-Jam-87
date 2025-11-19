@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://57eyrc8g8h6g"]
+[gd_scene load_steps=6 format=3 uid="uid://57eyrc8g8h6g"]
 
 [ext_resource type="PackedScene" uid="uid://cqfsvslvri855" path="res://world/resources/tree/tree.tscn" id="1_pn46v"]
 [ext_resource type="PackedScene" uid="uid://dnrx1cp8p8huy" path="res://entities/player/player.tscn" id="2_id5sv"]
 [ext_resource type="PackedScene" uid="uid://du0ivfuf4ixnq" path="res://world/resources/resource_gui.tscn" id="3_id5sv"]
 [ext_resource type="PackedScene" uid="uid://c3aa1scxrd44c" path="res://world/building/builder.tscn" id="3_tjtri"]
+[ext_resource type="PackedScene" uid="uid://ch7uknc2sbsuk" path="res://crafting/crafting_menu.tscn" id="5_utspg"]
 
 [node name="TestCraft" type="Node2D"]
 
@@ -30,3 +31,5 @@ position = Vector2(578, 318)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ResourceGui" parent="CanvasLayer" instance=ExtResource("3_id5sv")]
+
+[node name="CraftingMenu" parent="CanvasLayer" instance=ExtResource("5_utspg")]

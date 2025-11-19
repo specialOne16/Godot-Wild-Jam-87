@@ -1,27 +1,31 @@
 extends Node2D
 class_name Builder
 
-const WALL = preload("uid://bg64ogjemrh2m")
+@onready var building_guide: Sprite2D = $BuildingGuide
+var building_guide_data: Building
 
-@onready var wall_shadow: Sprite2D = $WallShadow
-
-var active_shadow: Node2D
+func _ready() -> void:
+	building_guide.visible = false
+	EventBus.craft_building.connect(start_building_guide)
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("build_wall") and ResourceManager.current_wood >= Wall.wood_cost:
-		active_shadow = wall_shadow
-		active_shadow.visible = true
-	
-	if active_shadow:
+	if building_guide.visible:
 		var mouse = get_local_mouse_position()
-		active_shadow.position = (mouse / Wall.size).round() * Wall.size
+		building_guide.position = (mouse / Wall.size).round() * Wall.size
 		
 		if Input.is_action_just_pressed("confirm_build"):
 			ResourceManager.spend_wood(Wall.wood_cost)
 			
-			var wall: Wall = WALL.instantiate()
-			wall.position = active_shadow.position
-			add_child(wall)
+			var instance: Node2D = building_guide_data.scene.instantiate()
+			instance.position = building_guide.position
+			add_child(instance)
 			
-			active_shadow.visible = false
-			active_shadow = null
+			building_guide.visible = false
+			building_guide_data = null
+
+func start_building_guide(building: Building):
+	assert(building.wood_cost <= ResourceManager.current_wood)
+	building_guide_data = building
+	
+	building_guide.texture = building.texture
+	building_guide.visible = true
