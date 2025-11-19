@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Building" load_steps=4 format=3 uid="uid://c8ddglq8e0f8m"]
+
+[ext_resource type="PackedScene" uid="uid://7f5t2k7j02at" path="res://world/building/stone_wall/stone_wall.tscn" id="1_jq8ft"]
+[ext_resource type="Script" uid="uid://mosl5fbjll84" path="res://world/building/building.gd" id="2_5xqs1"]
+[ext_resource type="Texture2D" uid="uid://dwcew2co30q1l" path="res://icon.svg" id="3_dsruw"]
+
+[resource]
+script = ExtResource("2_5xqs1")
+name = "Stone Wall"
+wood_cost = 5
+stone_cost = 15
+texture = ExtResource("3_dsruw")
+scene = ExtResource("1_jq8ft")
+metadata/_custom_type_script = "uid://mosl5fbjll84"
