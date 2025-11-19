@@ -6,4 +6,4 @@ class_name ZombieData
 
 var drops_list_items: Array =['wood','wood','wood','wood','wood','stone','stone','stone','steel','steel', 'hp','hp','hp','hp','damage','damage']
 #var drops_list_player_upgrades: Array =['hp','hp','hp','hp','damage','damage']
-var drop_count_ratio: Array = [1,1,1,1,1,1,1,1,2,2,2,3,3,4]
+var drop_count_ratio: Array = [0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,2,2,2,3,3,4]
