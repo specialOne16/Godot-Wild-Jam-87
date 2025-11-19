@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="Building" load_steps=4 format=3 uid="uid://cegcm30mbu74m"]
+[gd_resource type="Resource" script_class="Building" load_steps=3 format=3 uid="uid://cegcm30mbu74m"]
 
 [ext_resource type="Script" uid="uid://mosl5fbjll84" path="res://world/building/building.gd" id="1_k7gr7"]
-[ext_resource type="PackedScene" uid="uid://bg64ogjemrh2m" path="res://world/building/wall/wall.tscn" id="1_sn48y"]
 [ext_resource type="Texture2D" uid="uid://dwcew2co30q1l" path="res://icon.svg" id="2_71t2n"]
 
 [resource]
@@ -9,5 +8,4 @@ script = ExtResource("1_k7gr7")
 name = "Wall"
 wood_cost = 1
 texture = ExtResource("2_71t2n")
-scene = ExtResource("1_sn48y")
 metadata/_custom_type_script = "uid://mosl5fbjll84"

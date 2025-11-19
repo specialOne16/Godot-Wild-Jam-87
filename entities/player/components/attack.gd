@@ -7,7 +7,7 @@ signal zombie_left
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("attack"):
 		for body in get_overlapping_bodies():
-			if body is Tree_:
+			if body is Tree_ or body is Rock or body is Scrap:
 				body.damaged()
 
 func _on_body_entered(body: Node2D) -> void:
