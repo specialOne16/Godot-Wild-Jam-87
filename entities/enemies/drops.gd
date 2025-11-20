@@ -31,12 +31,11 @@ func _ready() -> void:
 	
 func orb_pickup(_body: Node2D) -> void:
 	if drop == 'wood':
-		ResourceManager.gain_wood(10)
+		ResourceManager.current_wood += 10
 	elif drop == 'steel':
-		pass
-		print('Once stone and steel are implemented change in drops.gd')
+		ResourceManager.current_steel += 10
 	elif drop == 'stone':
-		pass
+		ResourceManager.current_stone += 10
 	elif drop == 'hp':
 		player_data.player_health += 10
 	elif drop == 'damage':
