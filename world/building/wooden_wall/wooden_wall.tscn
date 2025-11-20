@@ -1,15 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bg64ogjemrh2m"]
+[gd_scene load_steps=3 format=3 uid="uid://bg64ogjemrh2m"]
 
-[ext_resource type="Script" uid="uid://bbtdf2ks4xh3g" path="res://world/building/wall/wall.gd" id="1_phoxf"]
 [ext_resource type="Texture2D" uid="uid://dwcew2co30q1l" path="res://icon.svg" id="2_66by4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tlq08"]
 size = Vector2(128, 128)
 
 [node name="Wall" type="StaticBody2D"]
+z_index = 1
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("1_phoxf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.2574758, 0.25747576, 0.25747573, 1)
