@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_arklo")
-weapon_damage = 10.0
+player_health = 1.0
+weapon_damage = 100.0
 metadata/_custom_type_script = "uid://ddli6qlkg6s88"

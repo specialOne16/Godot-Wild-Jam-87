@@ -40,8 +40,7 @@ scale = Vector2(5, 5)
 [node name="ZombieAttack" parent="." instance=ExtResource("3_sglur")]
 unique_name_in_owner = true
 scale = Vector2(50, 50)
-collision_layer = 2
-collision_mask = 6
+collision_mask = 2
 
 [node name="bulletInterval" type="Timer" parent="."]
 unique_name_in_owner = true

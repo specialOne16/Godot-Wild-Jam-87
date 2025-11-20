@@ -15,9 +15,9 @@ position = Vector2(815, 314)
 visible = false
 
 [node name="DayNightCycle" parent="CanvasLayer" instance=ExtResource("3_4y3cs")]
-night_timer_time = 50.0
 morning_timer_time = 1.0
 dusk_timer_time = 1.0
+night_timer_time = 50.0
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_df015")]
 position = Vector2(96, 94)
