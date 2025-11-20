@@ -15,7 +15,7 @@ func _ready() -> void:
 
 func spawn_enemy():
 	# Always check valid instance if you want to check object in tree or not after freeing that object
-	if event_bus.enemy_spawner == true and is_instance_valid(player) and player.is_inside_tree():
+	if EventBus.enemy_spawner == true and is_instance_valid(player) and player.is_inside_tree():
 		var enemy: BaseEnemy = BASE_ENEMY.instantiate()
 		enemy.move_speed = spawned_move_speed
 		enemy.player = player
