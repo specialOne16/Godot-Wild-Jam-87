@@ -5,19 +5,29 @@ class_name EnemySpawner
 
 const BASE_ENEMY = preload("uid://devxha63j6w0k")
 
+const SLOW_MELEE_ZOMBIE_DATA = preload("uid://dd6b64bybbe8m")
+
+const ENEMY_TYPES: Array[Resource] = [
+	SLOW_MELEE_ZOMBIE_DATA
+]
+
 @export var player: Player
+@export var world: Node2D
 @onready var enemy_spawn_timer: Timer = %EnemySpawnTimer
 
+var spawner_index: int
 
 func _ready() -> void:
-	enemy_spawn_timer.start()
-	enemy_spawn_timer.timeout.connect(spawn_enemy)
+	EventBus.time_changed.connect(func(time): if time == "NIGHT": spawn_enemy())
+
+func _process(_delta: float) -> void:
+	if player:
+		position = player.position + Vector2.from_angle(2 * PI * spawner_index / World.ZOMBIE_SPAWNER_COUNT) * 640
 
 func spawn_enemy():
-	# Always check valid instance if you want to check object in tree or not after freeing that object
-	if EventBus.enemy_spawner == true and is_instance_valid(player) and player.is_inside_tree():
+	if player:
 		var enemy: BaseEnemy = BASE_ENEMY.instantiate()
-		enemy.move_speed = spawned_move_speed
 		enemy.player = player
-		add_child(enemy)
-		
+		enemy.data = ENEMY_TYPES.pick_random()
+		enemy.position = position
+		world.add_child.call_deferred(enemy)

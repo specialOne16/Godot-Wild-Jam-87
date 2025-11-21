@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwklgo80abtcq"]
+[gd_scene load_steps=7 format=3 uid="uid://cwklgo80abtcq"]
 
-[ext_resource type="Texture2D" uid="uid://cgsf60tgwvdpv" path="res://Textures/Creatures/Player/pixil-frame-0 (23).png" id="1_slhj7"]
+[ext_resource type="Script" uid="uid://cbywyofvi4r42" path="res://Textures/Anims/base_anim.gd" id="1_1df53"]
+[ext_resource type="Texture2D" uid="uid://bepya4j8wc0uj" path="res://Textures/Creatures/Player/player_anim.png" id="1_slhj7"]
 
 [sub_resource type="Animation" id="Animation_vtpkp"]
 resource_name = "Idle"
@@ -58,7 +59,8 @@ _data = {
 &"Walk": SubResource("Animation_yj53a")
 }
 
-[node name="Player Anims" type="Node2D"]
+[node name="PlayerAnim" type="Node2D"]
+script = ExtResource("1_1df53")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)

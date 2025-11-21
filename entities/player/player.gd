@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Player
-@onready var Anims = $"Player Anims/AnimationPlayer"
+
+
 @export var speed = 400
 
 @onready var bullet_spawn: Marker2D = %bulletspawn
@@ -8,6 +9,7 @@ class_name Player
 @onready var bullet_interval: Timer = %bulletInterval
 @onready var gun: Sprite2D = %gun
 @onready var player_hp_bar: TextureProgressBar = %PlayerHPBar
+@onready var player_anim: BaseAnim = $PlayerAnim
 
 var bulletScene : PackedScene = preload("uid://c0xqahtmvo8kf")
 var player_data := ResourceManager.player_data_rm
@@ -55,9 +57,9 @@ func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
 	if input_direction:
-		Anims.play("Walk")
+		player_anim.walk()
 	else:
-		Anims.play("Idle")
+		player_anim.idle()
 
 
 func _physics_process(_delta):

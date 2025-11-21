@@ -1,11 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqfsvslvri855"]
+[gd_scene load_steps=4 format=3 uid="uid://cqfsvslvri855"]
 
-[ext_resource type="Texture2D" uid="uid://dwcew2co30q1l" path="res://icon.svg" id="1_1ypuu"]
-[ext_resource type="Script" uid="uid://pfo2v6ca2fm4" path="res://world/resources/tree/tree.gd" id="1_k8doy"]
-[ext_resource type="Texture2D" uid="uid://cp464pc31lxd6" path="res://Textures/Objects/pixil-frame-0 (22).png" id="3_ynmgf"]
+[ext_resource type="Script" uid="uid://pfo2v6ca2fm4" path="res://world/resource/tree/tree.gd" id="1_k8doy"]
+[ext_resource type="Texture2D" uid="uid://byo2wuhixleya" path="res://Textures/Objects/normal_tree.png" id="2_xf8j2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jn22b"]
-size = Vector2(26, 26)
+[sub_resource type="CircleShape2D" id="CircleShape2D_xf8j2"]
+radius = 12.0
 
 [node name="Tree" type="StaticBody2D"]
 collision_layer = 4
@@ -13,15 +12,9 @@ collision_mask = 0
 script = ExtResource("1_k8doy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 modulate = Color(0.937255, 0.505882, 0.0705882, 1)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_1ypuu")
+position = Vector2(0, -24)
+texture = ExtResource("2_xf8j2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_jn22b")
-
-[node name="Pixil-frame-0(22)" type="Sprite2D" parent="."]
-position = Vector2(0, -51)
-scale = Vector2(2, 2)
-texture = ExtResource("3_ynmgf")
+shape = SubResource("CircleShape2D_xf8j2")

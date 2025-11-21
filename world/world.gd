@@ -1,9 +1,37 @@
 extends Node2D
 class_name World
 
-@onready var player: Player = %Player
-@onready var base_enemy: BaseEnemy = %BaseEnemy
+const RESOURCE_SPAWNER = preload("uid://dnh1ucwwrkajw")
+const ENEMY_SPAWNER = preload("uid://mh1quh77s5gw")
 
+const MAP_SIZE = Vector2(6400, 6400)
+const CHUNK_SIZE = Vector2(640, 640)
+const RESOURCE_PER_CHUNK = 5
+
+const ZOMBIE_SPAWNER_COUNT = 10
+
+@onready var player: Player = %Player
 
 func _ready() -> void:
-	base_enemy.player = player
+	player.position = MAP_SIZE / 2
+	init_resource_spawner()
+	init_zombie_spawner()
+
+func init_resource_spawner():
+	for x in roundi(MAP_SIZE.x / CHUNK_SIZE.x): for y in roundi(MAP_SIZE.y / CHUNK_SIZE.y):
+		for i in range(RESOURCE_PER_CHUNK):
+			var spawner: ResourceSpawner = RESOURCE_SPAWNER.instantiate()
+			spawner.world = self
+			spawner.position = Vector2(
+				randf_range(CHUNK_SIZE.x * x, CHUNK_SIZE.x * (x + 1)),
+				randf_range(CHUNK_SIZE.y * y, CHUNK_SIZE.y * (y + 1))
+			)
+			add_child(spawner)
+
+func init_zombie_spawner():
+	for i in range(ZOMBIE_SPAWNER_COUNT):
+		var spawner: EnemySpawner = ENEMY_SPAWNER.instantiate()
+		spawner.world = self
+		spawner.player = player
+		spawner.spawner_index = i
+		add_child(spawner)
