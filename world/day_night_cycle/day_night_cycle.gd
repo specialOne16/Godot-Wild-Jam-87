@@ -26,17 +26,18 @@ func timer_init():
 	night_timer.timeout.connect(toggle_morning_overlay)
 
 func toggle_morning_overlay():
-	EventBus.enemy_spawner = false
+	EventBus.time_changed.emit("DAY")
 	dusk_overlay.visible = false
 	dark_overlay.visible = false
 	morning_timer.start()
 
 func toggle_dusk_overlay():
+	EventBus.time_changed.emit("DUSK")
 	dusk_overlay.visible = true
 	dusk_timer.start()
 
 func toggle_dark_overlay():
+	EventBus.time_changed.emit("NIGHT")
 	dark_overlay.visible = true
-	EventBus.enemy_spawner = true
 	night_timer.start()
 	

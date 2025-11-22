@@ -10,6 +10,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("build_menu"):
 		panel.visible = not panel.visible
+		EventBus.craft_building.emit(null)
 
-func building_selected(_building):
-	panel.visible = false
+func building_selected(building):
+	if building: panel.visible = false

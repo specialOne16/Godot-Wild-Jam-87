@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnh1ucwwrkajw"]
+[gd_scene load_steps=3 format=3 uid="uid://dnh1ucwwrkajw"]
 
 [ext_resource type="Script" uid="uid://rbdxewe465r2" path="res://world/resource/spawner/resource_spawner.gd" id="1_dv5xu"]
 
-[node name="ResourceSpawner" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dv5xu"]
+size = Vector2(32, 32)
+
+[node name="ResourceSpawner" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_dv5xu")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dv5xu")
+debug_color = Color(0.6935578, 0.4913866, 0.19825712, 0.41960785)

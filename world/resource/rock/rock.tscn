@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbla4cohjevo5"]
 
 [ext_resource type="Script" uid="uid://dg8rvlj0bhtsr" path="res://world/resource/rock/rock.gd" id="1_s4qw4"]
-[ext_resource type="Texture2D" uid="uid://dwcew2co30q1l" path="res://icon.svg" id="2_ni2wh"]
+[ext_resource type="Texture2D" uid="uid://dyxplpv43j7bq" path="res://Textures/Objects/rock.png" id="2_mms4x"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ps8ch"]
-size = Vector2(26, 26)
+[sub_resource type="CircleShape2D" id="CircleShape2D_mms4x"]
+radius = 12.0
 
 [node name="Rock" type="StaticBody2D"]
 collision_layer = 4
@@ -13,8 +13,8 @@ script = ExtResource("1_s4qw4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.20820007, 0.16364372, 0.16734326, 1)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("2_ni2wh")
+position = Vector2(0, -8)
+texture = ExtResource("2_mms4x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ps8ch")
+shape = SubResource("CircleShape2D_mms4x")

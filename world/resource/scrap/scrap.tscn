@@ -1,10 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://bbjwyofgg02jm"]
 
-[ext_resource type="Texture2D" uid="uid://dwcew2co30q1l" path="res://icon.svg" id="1_bn5uc"]
 [ext_resource type="Script" uid="uid://bsbwi6j18svd2" path="res://world/resource/scrap/scrap.gd" id="1_mf0hy"]
+[ext_resource type="Texture2D" uid="uid://bpu3krpt4d1oy" path="res://Textures/Objects/scraps.png" id="2_mf0hy"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4vak1"]
-size = Vector2(26, 26)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mf0hy"]
+radius = 13.0
+height = 36.0
 
 [node name="Scrap" type="StaticBody2D"]
 collision_layer = 4
@@ -13,8 +14,8 @@ script = ExtResource("1_mf0hy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.2997851, 0.7013295, 0.75845355, 1)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_bn5uc")
+position = Vector2(0, -8)
+texture = ExtResource("2_mf0hy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_4vak1")
+shape = SubResource("CapsuleShape2D_mf0hy")
