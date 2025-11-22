@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwklgo80abtcq"]
+
+[ext_resource type="Script" uid="uid://cbywyofvi4r42" path="res://Textures/Anims/base_anim.gd" id="1_1df53"]
+[ext_resource type="Texture2D" uid="uid://bepya4j8wc0uj" path="res://Textures/Creatures/Player/player_anim.png" id="1_slhj7"]
+
+[sub_resource type="Animation" id="Animation_vtpkp"]
+resource_name = "Idle"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_oqd0q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_yj53a"]
+resource_name = "Walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 4, 2, 4, 0, 3, 1, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lfk5w"]
+_data = {
+&"Idle": SubResource("Animation_vtpkp"),
+&"RESET": SubResource("Animation_oqd0q"),
+&"Walk": SubResource("Animation_yj53a")
+}
+
+[node name="PlayerAnim" type="Node2D"]
+script = ExtResource("1_1df53")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_slhj7")
+hframes = 6
+vframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lfk5w")
+}

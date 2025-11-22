@@ -27,7 +27,7 @@ func _ready() -> void:
 	stone_container.visible = building.stone_cost != 0
 	steel_container.visible = building.steel_cost != 0
 	
-	texture_rect.texture = building.texture
+	texture_rect.texture = building.recipe_texture
 	
 	update_resource(0)
 	ResourceManager.wood_changed.connect(update_resource)

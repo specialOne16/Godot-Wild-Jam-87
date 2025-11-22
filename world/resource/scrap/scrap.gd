@@ -5,5 +5,5 @@ var spawner: ResourceSpawner
 
 func damaged():
 	ResourceManager.current_steel += 5
-	spawner.start_spawn_delay()
+	spawner.spawned = false
 	queue_free()

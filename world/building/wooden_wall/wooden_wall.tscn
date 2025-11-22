@@ -1,18 +1,21 @@
 [gd_scene load_steps=3 format=3 uid="uid://bg64ogjemrh2m"]
 
-[ext_resource type="Texture2D" uid="uid://dwcew2co30q1l" path="res://icon.svg" id="2_66by4"]
+[ext_resource type="Texture2D" uid="uid://cq8c242e8jkvd" path="res://Textures/Objects/walls.png" id="1_ccouv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tlq08"]
-size = Vector2(128, 128)
+size = Vector2(32, 14)
 
 [node name="Wall" type="StaticBody2D"]
-z_index = 1
 collision_layer = 8
 collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.2574758, 0.25747576, 0.25747573, 1)
-texture = ExtResource("2_66by4")
+position = Vector2(0, -8)
+texture = ExtResource("1_ccouv")
+hframes = 6
+vframes = 6
+frame = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_tlq08")
