@@ -12,7 +12,7 @@ class_name BaseEnemy
 var anim: BaseAnim
 
 const DROPS = preload("uid://b8v3hshx5sa78")
-
+const PERSPECTIVE_OFFSET = Vector2.UP * 11
 
 var zombie_data := ResourceManager.zombie_data_rm
 var player_data := ResourceManager.player_data_rm
@@ -25,6 +25,7 @@ func _ready() -> void:
 	zombie_range.connect("body_exited", stop_damage_timer)
 	
 	anim = data.texture.instantiate()
+	anim.position = PERSPECTIVE_OFFSET
 	add_child(anim)
 
 func player_check(body: Node2D) -> void:

@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 class_name ResourceSpawner
 
 @export var world: Node2D

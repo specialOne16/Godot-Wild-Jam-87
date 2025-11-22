@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://pfa3i7hrkhc" path="res://entities/enemies/base/base_enemy.gd" id="1_8xa7x"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_stjds"]
-size = Vector2(128, 128)
+[sub_resource type="CircleShape2D" id="CircleShape2D_8xa7x"]
+radius = 18.110771
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6pcee"]
 radius = 42.047592
@@ -25,7 +25,7 @@ script = ExtResource("1_8xa7x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_stjds")
+shape = SubResource("CircleShape2D_8xa7x")
 
 [node name="ZombieRange" type="Area2D" parent="."]
 unique_name_in_owner = true

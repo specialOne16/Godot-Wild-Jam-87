@@ -21,6 +21,7 @@ func init_resource_spawner():
 	for x in roundi(MAP_SIZE.x / CHUNK_SIZE.x): for y in roundi(MAP_SIZE.y / CHUNK_SIZE.y):
 		for i in range(RESOURCE_PER_CHUNK):
 			var spawner: ResourceSpawner = RESOURCE_SPAWNER.instantiate()
+			spawner.name = "ResourceSpawner%d%d%d" % [x, y, i]
 			spawner.world = self
 			spawner.position = Vector2(
 				randf_range(CHUNK_SIZE.x * x, CHUNK_SIZE.x * (x + 1)),

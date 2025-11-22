@@ -63,7 +63,6 @@ _data = {
 script = ExtResource("1_1df53")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
 texture = ExtResource("1_slhj7")
 hframes = 6
 vframes = 6
