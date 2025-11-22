@@ -5,8 +5,8 @@ const RESOURCE_SPAWNER = preload("uid://dnh1ucwwrkajw")
 const ENEMY_SPAWNER = preload("uid://mh1quh77s5gw")
 
 const MAP_SIZE = Vector2(6400, 6400)
-const CHUNK_SIZE = Vector2(640, 640)
-const RESOURCE_PER_CHUNK = 5
+const CHUNK_SIZE = Vector2(640, 360)
+const RESOURCE_PER_CHUNK = 3
 
 const ZOMBIE_SPAWNER_COUNT = 10
 

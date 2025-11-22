@@ -39,12 +39,13 @@ func stop_damage_timer(body: Node2D) -> void:
 func player_damage() -> void:
 	player_data.player_health -= zombie_data.zombie_damage
 
-func _process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# TODO : when day arrives need to either stop zombies attacking player.
 	if player:
-		global_position += global_position.direction_to(player.global_position) * move_speed * delta;
+		linear_velocity = global_position.direction_to(player.global_position) * move_speed
 		anim.walk()
 	else:
+		linear_velocity = Vector2.ZERO
 		anim.idle()
 
 func damaged(damage: float) -> void:
