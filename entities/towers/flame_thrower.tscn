@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://dsxh4q3p0o4xt"]
+
+[ext_resource type="Script" uid="uid://bh407fbeqhisy" path="res://entities/towers/flame_thrower.gd" id="1_7ibb3"]
+[ext_resource type="Texture2D" uid="uid://dwcew2co30q1l" path="res://icon.svg" id="2_lsv1i"]
+[ext_resource type="PackedScene" uid="uid://b6t8fb81s2cwj" path="res://entities/towers/flame.tscn" id="3_lsv1i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sh73x"]
+radius = 1161.9333
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wriij"]
+radius = 86.46965
+
+[sub_resource type="Gradient" id="Gradient_bls4j"]
+offsets = PackedFloat32Array(0.43571427)
+colors = PackedColorArray(0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_15o34"]
+gradient = SubResource("Gradient_bls4j")
+height = 3
+
+[node name="FlameThrower" type="Area2D"]
+collision_layer = 64
+collision_mask = 99
+script = ExtResource("1_7ibb3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lsv1i")
+
+[node name="FlameThrowerDetectionRange" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_sh73x")
+
+[node name="FlameThrowerAttackRange" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_wriij")
+
+[node name="FlameThrowerFireRate" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 1.5
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -32.0
+offset_top = -38.0
+offset_right = 32.0
+offset_bottom = -34.0
+
+[node name="FlameThrowerHPBar" type="TextureProgressBar" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_progress = SubResource("GradientTexture2D_15o34")
+
+[node name="Flame" parent="." instance=ExtResource("3_lsv1i")]
+unique_name_in_owner = true

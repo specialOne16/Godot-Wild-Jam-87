@@ -6,7 +6,7 @@ class_name Bullet
 @export var bullet_speed := 800
 
 var direction := Vector2.ZERO
-var player_data := ResourceManager.player_data_rm
+var bullet_damage : int
 
 func _ready():
 	bullet_start()
@@ -25,5 +25,5 @@ func _physics_process(delta):
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("damaged"):
-		body.damaged(player_data.weapon_damage)
+		body.damaged(bullet_damage)
 		queue_free()
