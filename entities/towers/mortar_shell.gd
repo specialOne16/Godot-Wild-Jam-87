@@ -9,6 +9,7 @@ var peak_height := 150.0       # how high the arc goes+
 var direction := Vector2.ZERO
 
 @export var explosion_radius := 64.0
+@export var shell_damage:= 2.0
 
 func _ready():
 	pass
@@ -44,7 +45,7 @@ func explode():
 	# Damage all bodies in radius
 	for body in get_overlapping_bodies():
 		if body.has_method("damaged"):
-			body.damaged(10)
+			body.damaged(shell_damage)
 
 	# Play particles/sound if needed
 	# queue_free after a short delay
