@@ -1,26 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://dsaimtmaf0bmf"]
+[gd_scene load_steps=6 format=3 uid="uid://dsaimtmaf0bmf"]
 
 [ext_resource type="PackedScene" uid="uid://dnrx1cp8p8huy" path="res://entities/player/player.tscn" id="2_844po"]
 [ext_resource type="PackedScene" uid="uid://mh1quh77s5gw" path="res://world/enemy_spawner/enemy_spawner.tscn" id="2_df015"]
 [ext_resource type="PackedScene" uid="uid://b77jx6vgrjkhp" path="res://world/day_night_cycle/day_night_cycle.tscn" id="3_4y3cs"]
 [ext_resource type="PackedScene" uid="uid://du0ivfuf4ixnq" path="res://world/resource/resource_gui.tscn" id="4_cgumk"]
+[ext_resource type="PackedScene" uid="uid://cx4x8tv8xh0l1" path="res://entities/towers/mortar_tower.tscn" id="6_ef1bp"]
 
 [node name="TestShoot" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("2_844po")]
 unique_name_in_owner = true
-position = Vector2(815, 314)
+position = Vector2(1143, 322)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
 
 [node name="DayNightCycle" parent="CanvasLayer" instance=ExtResource("3_4y3cs")]
-night_timer_time = 50.0
 morning_timer_time = 1.0
 dusk_timer_time = 1.0
+night_timer_time = 50.0
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_df015")]
 position = Vector2(96, 94)
+spawned_move_speed = 20.0
 player = NodePath("../Player")
 
 [node name="EnemySpawner2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_df015")]
@@ -30,3 +32,7 @@ player = NodePath("../Player")
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="ResourceGui" parent="CanvasLayer2" instance=ExtResource("4_cgumk")]
+
+[node name="Mortar" parent="." instance=ExtResource("6_ef1bp")]
+position = Vector2(392, 308)
+scale = Vector2(0.25, 0.25)

@@ -1,5 +1,7 @@
 extends Node
 
+signal zombieDead
+
 var enemy_spawner : bool= false;
 var inside_safe_house: bool = false;
 

@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 EventBus="*res://globals/event_bus.gd"
 ResourceManager="*res://globals/resource_manager.gd"
 
+[display]
+
+window/size/always_on_top=true
+
 [input]
 
 left={
@@ -70,6 +74,8 @@ build_menu={
 2d_physics/layer_4="Building"
 2d_physics/layer_5="PlayerBullet"
 2d_physics/layer_6="EmemyBullets"
+2d_physics/layer_7="Towers"
+2d_physics/layer_8="TowerBullets"
 
 [rendering]
 

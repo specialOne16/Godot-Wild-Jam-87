@@ -1,9 +1,9 @@
 extends RigidBody2D
 class_name BaseEnemy
 
-
 @export var enemy_health: float = 100;
 @export var player: Player
+@export var move_speed: float = 100
 
 @onready var hp_bar: TextureProgressBar = %enemyHpBar
 @onready var zombie_damage_timer: Timer = %ZombieDamageTimer
@@ -13,13 +13,18 @@ const DROPS = preload("uid://b8v3hshx5sa78")
 
 var zombie_data := ResourceManager.zombie_data_rm
 var player_data := ResourceManager.player_data_rm
-var move_speed: float = 100
 
 func _ready() -> void:
 	hp_bar.value = enemy_health
+	connect_signals()
+	
+func connect_signals() -> void:
 	zombie_range.connect("body_entered", player_check)
 	zombie_damage_timer.connect("timeout", player_damage)
 	zombie_range.connect("body_exited", stop_damage_timer)
+	
+func zombie_died(body: Node2D):
+	return(body)
 
 func player_check(body: Node2D) -> void:
 	if body is Player:
@@ -58,4 +63,4 @@ func damaged(damage: float) -> void:
 			drops.global_position = self.global_position + final_dir * distance
 			get_tree().current_scene.call_deferred("add_child",drops)
 		
-		ResourceManager.enemy_list.erase(self)
+		EventBus.zombieDead.emit(self)
