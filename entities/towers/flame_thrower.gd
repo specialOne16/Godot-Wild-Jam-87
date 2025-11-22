@@ -43,7 +43,12 @@ func _process(_delta: float) -> void:
 		
 	if is_enemy_inside == true:
 		nearest_enemy_direction = (nearest_enemy_body.global_position - global_position).normalized()
-		self.look_at(nearest_enemy_body.global_position)
+		#self.look_at(nearest_enemy_body.global_position)
+		nearest_enemy_rotation = nearest_enemy_direction.angle()
+		#self.rotation = nearest_enemy_rotation
+		# 0.1 = rotation speed (lower is slower, higher is faster)
+		rotation = lerp_angle(rotation, nearest_enemy_rotation, 0.01)
+		
 
 func zombie_died(body: Node2D) -> void:
 	enemies.erase(body)
