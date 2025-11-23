@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cinic2jo4wvuf"]
+[gd_scene load_steps=41 format=3 uid="uid://cinic2jo4wvuf"]
 
 [ext_resource type="Script" uid="uid://dy78rw4ryl71k" path="res://entities/towers/ranged_tower.gd" id="1_wriij"]
 [ext_resource type="Texture2D" uid="uid://cd0sbi4spj2ka" path="res://Textures/Weapons/Weapons/cannon_dying.png" id="2_r4n58"]
@@ -247,7 +247,10 @@ colors = PackedColorArray(0, 1, 0, 1)
 gradient = SubResource("Gradient_bls4j")
 height = 3
 
-[node name="RangedTower" type="Area2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_r4n58"]
+radius = 16.03122
+
+[node name="RangedTower" type="StaticBody2D"]
 collision_layer = 64
 collision_mask = 99
 script = ExtResource("1_wriij")
@@ -266,11 +269,14 @@ frame_progress = 0.28806487
 unique_name_in_owner = true
 position = Vector2(18, 0)
 
-[node name="RangeTowerDamageRange" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 99
+
+[node name="RangeTowerDamageRange" type="CollisionShape2D" parent="Area2D"]
 unique_name_in_owner = true
 shape = SubResource("CircleShape2D_sh73x")
 
-[node name="rangeTowerHitRange" type="CollisionShape2D" parent="."]
+[node name="rangeTowerHitRange" type="CollisionShape2D" parent="Area2D"]
 unique_name_in_owner = true
 shape = SubResource("CircleShape2D_wriij")
 
@@ -295,3 +301,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_progress = SubResource("GradientTexture2D_wriij")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_r4n58")

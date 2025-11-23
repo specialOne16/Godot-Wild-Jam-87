@@ -22,5 +22,5 @@ func deal_damage():
 	if not is_active: return
 	
 	for body in zombie_melee_attack_range.get_overlapping_bodies():
-		if body is Player:
+		if body.has_method("damaged"):
 			body.damaged(enemy.data.zombie_damage)

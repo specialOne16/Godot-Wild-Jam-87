@@ -1,4 +1,4 @@
-extends Area2D
+extends StaticBody2D
 class_name RangedTower
 
 @export var tower_damage: float = 10
@@ -11,6 +11,7 @@ class_name RangedTower
 @onready var canon_animation_sprite: AnimatedSprite2D = %CanonAnimationSprite
 @onready var ranged_firining_position: Marker2D = %RangedFiriningPosition
 @onready var canon_pivot: Node2D = %CanonPivot
+@onready var area_2d: Area2D = $Area2D
 
 
 var bulletScene : PackedScene = preload("uid://c0xqahtmvo8kf")
@@ -26,8 +27,8 @@ func _ready() -> void:
 	connect_signals()
 
 func connect_signals() -> void:
-	connect("body_entered",enemy_inside)
-	connect("body_exited",enemy_outside)
+	area_2d.connect("body_entered",enemy_inside)
+	area_2d.connect("body_exited",enemy_outside)
 	EventBus.connect("zombieDead",zombie_died)
 	tower_bullet_interval.timeout.connect(fire_bullet)
 

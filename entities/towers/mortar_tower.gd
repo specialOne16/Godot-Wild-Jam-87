@@ -1,4 +1,4 @@
-extends Area2D
+extends StaticBody2D
 class_name MortarTower
 
 @export var tower_damage: int = 10
@@ -8,6 +8,7 @@ class_name MortarTower
 @onready var mortar_detection_range: CollisionShape2D = %MortarDetectionRange
 @onready var mortar_fire_rate: Timer = %MortarFireRate
 @onready var mortar_tower_hp_bar: TextureProgressBar = %MortarTowerHPBar
+@onready var area_2d: Area2D = $Area2D
 
 
 var is_enemy_inside : bool = false
@@ -23,8 +24,8 @@ func _ready() -> void:
 	connect_signals()
 
 func connect_signals() -> void:
-	connect("body_entered",enemy_inside)
-	connect("body_exited",enemy_outside)
+	area_2d.connect("body_entered",enemy_inside)
+	area_2d.connect("body_exited",enemy_outside)
 	EventBus.connect("zombieDead",zombie_died)
 	mortar_fire_rate.timeout.connect(fire_bullet)
 

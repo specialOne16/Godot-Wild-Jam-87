@@ -1,14 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://7f5t2k7j02at"]
+[gd_scene load_steps=4 format=3 uid="uid://7f5t2k7j02at"]
 
 [ext_resource type="Texture2D" uid="uid://cq8c242e8jkvd" path="res://Textures/Objects/walls.png" id="1_fig2a"]
+[ext_resource type="Script" uid="uid://ck8uwhak3e77m" path="res://world/building/stone_wall/stone_wall.gd" id="1_u41my"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tlq08"]
 size = Vector2(32, 14)
 
-[node name="Wall" type="StaticBody2D" groups=["walls"]]
-z_index = 1
+[node name="Wall" type="StaticBody2D"]
 collision_layer = 8
 collision_mask = 0
+script = ExtResource("1_u41my")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
