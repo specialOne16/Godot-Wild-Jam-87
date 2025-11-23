@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_7jkv8")
-zombie_damage = 30.0
-move_speed = 70.0
+zombie_health = 150.0
+zombie_damage = 20.0
+move_speed = 60.0
 texture = ExtResource("2_bf8do")

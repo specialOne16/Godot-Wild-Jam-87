@@ -25,6 +25,7 @@ var animation_stopper: int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	connect_signals()
+	flame.fire_damage = tower_damage
 
 func connect_signals() -> void:
 	area_2d.connect("body_entered",enemy_inside)

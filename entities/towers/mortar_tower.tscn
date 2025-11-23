@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cx4x8tv8xh0l1"]
+[gd_scene load_steps=18 format=3 uid="uid://cx4x8tv8xh0l1"]
 
 [ext_resource type="Script" uid="uid://dtpxw5qgkbu3t" path="res://entities/towers/mortar_tower.gd" id="1_15o34"]
 [ext_resource type="Texture2D" uid="uid://b6q81yko53wa3" path="res://Textures/Weapons/Weapons/mortar_shoot.png" id="2_15o34"]
@@ -95,7 +95,8 @@ radius = 86.833176
 collision_layer = 64
 collision_mask = 99
 script = ExtResource("1_15o34")
-tower_damage = 100.0
+tower_damage = 30.0
+tower_hp = 200.0
 
 [node name="mortarAnimatedSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
