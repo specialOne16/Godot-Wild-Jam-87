@@ -16,9 +16,14 @@ const ZOMBIE_SPAWNER_COUNT = 10
 @onready var player: Player = %Player
 
 func _ready() -> void:
+	MusicPlayer.death.stop()
+	MusicPlayer.day_music.play()
+	
 	player.position = MAP_SIZE / 2
 	init_resource_spawner()
 	init_zombie_spawner()
+	
+	EventBus.player_died.connect(end_game)
 	
 	EventBus.night_time_decay.connect(apply_damage_to_children)
 
@@ -41,6 +46,16 @@ func init_zombie_spawner():
 		spawner.player = player
 		spawner.spawner_index = i
 		add_child(spawner)
+
+func end_game():
+	MusicPlayer.day_music.stop()
+	MusicPlayer.night_song.stop()
+	MusicPlayer.death.play()
+	
+	$CanvasLayer/CraftingMenu.panel.visible = false
+	
+	get_tree().paused = true
+	%EndGameMenu.visible = true
 
 
 func apply_damage_to_children(damage_amount: int, root: Node = self):

@@ -2,13 +2,17 @@ extends Area2D
 class_name ResourceSpawner
 
 @export var world: Node2D
+@onready var resource_attack: AudioStreamPlayer = $ResourceAttack
 
 const TREE = preload("uid://cqfsvslvri855")
 const ROCK = preload("uid://cbla4cohjevo5")
 const SCRAP = preload("uid://bbjwyofgg02jm")
 
 var spawn_timer = 0
-var spawned = false
+var spawned = false :
+	set(value):
+		if resource_attack and value == false: resource_attack.play()
+		spawned = value
 
 func _ready() -> void: 
 	spawn()

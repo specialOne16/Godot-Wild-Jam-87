@@ -29,6 +29,7 @@ func connect_signals() -> void:
 func fire():
 	var flame_tween = get_tree().create_tween().set_parallel()
 	flame_tween.tween_property(self, "scale", Vector2(1,1), .25).from(Vector2.ZERO)
+	
 	flame_duration.start()
 
 	# Play particles/sound if needed
