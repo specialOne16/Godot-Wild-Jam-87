@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Building" load_steps=5 format=3 uid="uid://mbg4g0htyfy1"]
+
+[ext_resource type="Script" uid="uid://mosl5fbjll84" path="res://world/building/building.gd" id="1_ginsk"]
+[ext_resource type="Texture2D" uid="uid://coivkx1on52v6" path="res://Textures/Weapons/Weapons/tower.png" id="1_i1tmq"]
+[ext_resource type="Texture2D" uid="uid://dwcew2co30q1l" path="res://icon.svg" id="1_rm0pf"]
+[ext_resource type="PackedScene" uid="uid://cx4x8tv8xh0l1" path="res://entities/towers/mortar_tower.tscn" id="2_i1tmq"]
+
+[resource]
+script = ExtResource("1_ginsk")
+name = "Mortar"
+wood_cost = 10
+stone_cost = 10
+steel_cost = 10
+recipe_texture = ExtResource("1_i1tmq")
+texture = ExtResource("1_rm0pf")
+scene = ExtResource("2_i1tmq")
+metadata/_custom_type_script = "uid://mosl5fbjll84"

@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://ch7uknc2sbsuk"]
+[gd_scene load_steps=7 format=3 uid="uid://ch7uknc2sbsuk"]
 
 [ext_resource type="Script" uid="uid://rkaoocccknoi" path="res://crafting/crafting_menu.gd" id="1_6n3le"]
 [ext_resource type="PackedScene" uid="uid://8p1tkjwdnpmw" path="res://crafting/crafting_menu_item.tscn" id="1_vp6lt"]
 [ext_resource type="Resource" uid="uid://c8ddglq8e0f8m" path="res://world/building/stone_wall/stone_wall.tres" id="3_6n3le"]
+[ext_resource type="Resource" uid="uid://cfm40mgt4pyo5" path="res://entities/towers/ranged_tower.tres" id="4_ohnvp"]
+[ext_resource type="Resource" uid="uid://mbg4g0htyfy1" path="res://entities/towers/mortar_tower.tres" id="5_ruqem"]
+[ext_resource type="Resource" uid="uid://1x231to28qqo" path="res://entities/towers/flame_thrower.tres" id="6_gpgr7"]
 
 [node name="CraftingMenu" type="Control"]
 layout_mode = 3
@@ -20,10 +23,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -161.5
-offset_top = -132.5
-offset_right = 161.5
-offset_bottom = 132.5
+offset_left = -144.0
+offset_top = -92.5
+offset_right = 144.0
+offset_bottom = 92.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -48,3 +51,18 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 building = ExtResource("3_6n3le")
+
+[node name="StoneWall2" parent="Panel/MarginContainer/HFlowContainer" instance=ExtResource("1_vp6lt")]
+unique_name_in_owner = true
+layout_mode = 2
+building = ExtResource("4_ohnvp")
+
+[node name="StoneWall3" parent="Panel/MarginContainer/HFlowContainer" instance=ExtResource("1_vp6lt")]
+unique_name_in_owner = true
+layout_mode = 2
+building = ExtResource("5_ruqem")
+
+[node name="StoneWall4" parent="Panel/MarginContainer/HFlowContainer" instance=ExtResource("1_vp6lt")]
+unique_name_in_owner = true
+layout_mode = 2
+building = ExtResource("6_gpgr7")

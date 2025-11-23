@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Building" load_steps=5 format=3 uid="uid://c8ddglq8e0f8m"]
 
+[ext_resource type="Texture2D" uid="uid://c1f0oy7g4jif4" path="res://Textures/UI/stone_wall_front.png" id="1_5xqs1"]
 [ext_resource type="PackedScene" uid="uid://7f5t2k7j02at" path="res://world/building/stone_wall/stone_wall.tscn" id="1_jq8ft"]
 [ext_resource type="Script" uid="uid://mosl5fbjll84" path="res://world/building/building.gd" id="2_5xqs1"]
-[ext_resource type="Texture2D" uid="uid://dwcew2co30q1l" path="res://icon.svg" id="3_dsruw"]
 [ext_resource type="Texture2D" uid="uid://cq8c242e8jkvd" path="res://Textures/Objects/walls.png" id="4_5xqs1"]
 
 [resource]
@@ -10,7 +10,7 @@ script = ExtResource("2_5xqs1")
 name = "Stone Wall"
 wood_cost = 5
 stone_cost = 15
-recipe_texture = ExtResource("3_dsruw")
+recipe_texture = ExtResource("1_5xqs1")
 texture = ExtResource("4_5xqs1")
 texture_frame_size = Vector2i(6, 6)
 texture_frame = 30
