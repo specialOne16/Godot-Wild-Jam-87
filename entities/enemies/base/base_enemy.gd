@@ -26,7 +26,12 @@ func zombie_died(body: Node2D):
 func damaged(damage: float) -> void:
 	enemy_health -= damage;
 	hp_bar.value = enemy_health
-
+	
+	var health_percentage = enemy_health / data.zombie_health
+	if health_percentage > 0.65: anim.normal()
+	elif health_percentage > 0.35: anim.hurt()
+	else: anim.dying()
+	
 	if enemy_health <= 0:
 		drop_items()
 		queue_free()

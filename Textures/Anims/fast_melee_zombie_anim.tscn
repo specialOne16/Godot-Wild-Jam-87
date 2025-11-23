@@ -110,6 +110,76 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_db22d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ut36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nuy0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hm4nv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t85pd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3krm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5mfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6blv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50jn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhxr0")
+}],
+"loop": false,
+"name": &"attack_dying",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_db22d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ut36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nuy0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hm4nv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t85pd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3krm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5mfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6blv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50jn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhxr0")
+}],
+"loop": false,
+"name": &"attack_hurt",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_q5q51")
 }],
 "loop": true,
@@ -138,6 +208,52 @@ animations = [{
 "loop": true,
 "name": &"walk",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kvo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uspud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t7rt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf4rr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtt22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41po5")
+}],
+"loop": true,
+"name": &"walk_dying",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kvo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uspud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t7rt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf4rr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtt22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41po5")
+}],
+"loop": true,
+"name": &"walk_hurt",
+"speed": 10.0
 }]
 
 [node name="SlowMeleeZombieAnim" type="Node2D"]
@@ -146,6 +262,4 @@ impact_delay = 0.25
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0l14k")
-animation = &"attack"
-frame = 9
-frame_progress = 1.0
+animation = &"attack_dying"
