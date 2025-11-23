@@ -1,18 +1,60 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnrx1cp8p8huy"]
+[gd_scene load_steps=14 format=3 uid="uid://dnrx1cp8p8huy"]
 
 [ext_resource type="Script" uid="uid://ce4ya7xl5rj20" path="res://entities/player/player.gd" id="1_abrql"]
 [ext_resource type="PackedScene" uid="uid://cwklgo80abtcq" path="res://Textures/Anims/player_anim.tscn" id="2_sglur"]
 [ext_resource type="PackedScene" uid="uid://b5c5eran3em6c" path="res://entities/player/components/attack.tscn" id="3_sglur"]
+[ext_resource type="Texture2D" uid="uid://c1ryy4j31kuw7" path="res://Textures/Weapons/Weapons/shot_gun.png" id="4_bls4j"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sglur"]
 radius = 18.439089
 
-[sub_resource type="Gradient" id="Gradient_sglur"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bls4j"]
+atlas = ExtResource("4_bls4j")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_bls4j"]
-gradient = SubResource("Gradient_sglur")
-width = 20
-height = 5
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkugw"]
+atlas = ExtResource("4_bls4j")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fjmc"]
+atlas = ExtResource("4_bls4j")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qiwj3"]
+atlas = ExtResource("4_bls4j")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26q78"]
+atlas = ExtResource("4_bls4j")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bectd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bls4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkugw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fjmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qiwj3")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26q78")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Gradient" id="Gradient_bls4j"]
 offsets = PackedFloat32Array(0.43571427)
@@ -45,14 +87,21 @@ collision_mask = 2
 unique_name_in_owner = true
 wait_time = 0.5
 
-[node name="gun" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-texture = SubResource("GradientTexture2D_bls4j")
-offset = Vector2(44, 0)
+[node name="GunContainer" type="Node2D" parent="."]
+position = Vector2(0, -8)
 
-[node name="bulletspawn" type="Marker2D" parent="gun"]
+[node name="gun" type="AnimatedSprite2D" parent="GunContainer"]
 unique_name_in_owner = true
-position = Vector2(54, 0)
+position = Vector2(23, 1.9073486e-06)
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_bectd")
+animation = &"attack"
+frame = 3
+frame_progress = 1.0
+
+[node name="bulletspawn" type="Marker2D" parent="GunContainer/gun"]
+unique_name_in_owner = true
+position = Vector2(-0.26600456, -9.8926935)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

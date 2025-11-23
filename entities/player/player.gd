@@ -9,7 +9,8 @@ class_name Player
 @onready var bullet_spawn: Marker2D = %bulletspawn
 @onready var zombie_attack: Attack = %ZombieAttack
 @onready var bullet_interval: Timer = %bulletInterval
-@onready var gun: Sprite2D = %gun
+@onready var gun_container: Node2D = $GunContainer
+@onready var gun: AnimatedSprite2D = %gun
 @onready var player_hp_bar: TextureProgressBar = %PlayerHPBar
 @onready var player_anim: BaseAnim = $PlayerAnim
 
@@ -42,8 +43,8 @@ func _process(_delta: float) -> void:
 		bullet_interval.stop()
 		
 	if is_enemy_inside == true:
-		nearest_enemy_direction = (nearest_enemy_body.global_position - gun.global_position).normalized()
-		gun.look_at(nearest_enemy_body.global_position)
+		nearest_enemy_direction = (nearest_enemy_body.global_position - global_position).normalized()
+		gun_container.look_at(nearest_enemy_body.global_position)
 
 func damaged(amount: float):
 	current_health -= amount
@@ -84,10 +85,13 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func fire_bullet() -> void:
+	gun.play("attack")
+	
 	var bullet: Bullet = bulletScene.instantiate()
 	bullet.direction = nearest_enemy_direction.normalized()
 	bullet.global_position = bullet_spawn.global_position
 	bullet.damage = bullet_damage
+	bullet.rotation = bullet.direction.angle()
 	bullet.set_collision_mask_value(2, true)
 	get_tree().current_scene.call_deferred("add_child",bullet)
 

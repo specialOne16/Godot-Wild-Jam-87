@@ -1,10 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0xqahtmvo8kf"]
 
 [ext_resource type="Script" uid="uid://ptar3os7xwyc" path="res://entities/player/bullet.gd" id="1_2qgwa"]
-[ext_resource type="Texture2D" uid="uid://dwcew2co30q1l" path="res://icon.svg" id="1_o27as"]
+[ext_resource type="Texture2D" uid="uid://bs5c1bo46xpm1" path="res://Textures/Weapons/Projectiles/bullet_thick.png" id="2_2qgwa"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_o27as"]
-radius = 8.062258
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_leoqw"]
+radius = 3.0
+height = 12.0
 
 [node name="bullet" type="Area2D"]
 collision_layer = 16
@@ -12,11 +13,12 @@ collision_mask = 0
 script = ExtResource("1_2qgwa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_o27as")
+rotation = 1.5707964
+texture = ExtResource("2_2qgwa")
 
 [node name="bulletcollision" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_o27as")
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_leoqw")
 
 [node name="bullet_alive" type="Timer" parent="."]
 unique_name_in_owner = true
