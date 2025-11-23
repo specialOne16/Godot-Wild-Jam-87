@@ -1,10 +1,113 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6t8fb81s2cwj"]
+[gd_scene load_steps=18 format=3 uid="uid://b6t8fb81s2cwj"]
 
-[ext_resource type="Texture2D" uid="uid://cdqfmudvbggax" path="res://Textures/Weapons/Projectiles/bullet_ball.png" id="1_ndsm6"]
 [ext_resource type="Script" uid="uid://bh7k4hwqr5ygo" path="res://entities/towers/flame.gd" id="1_todh5"]
+[ext_resource type="Texture2D" uid="uid://ct7s3bnfaa0md" path="res://Textures/Weapons/Projectiles/fire/fire_column_medium_8.png" id="2_3h5wl"]
+[ext_resource type="Texture2D" uid="uid://d5j5wx41vcfk" path="res://Textures/Weapons/Projectiles/fire/fire_column_medium_9.png" id="3_q507s"]
+[ext_resource type="Texture2D" uid="uid://dxgr66tpefcmf" path="res://Textures/Weapons/Projectiles/fire/fire_column_medium_10.png" id="4_g0l5k"]
+[ext_resource type="Texture2D" uid="uid://ccosjklcrefh" path="res://Textures/Weapons/Projectiles/fire/fire_column_medium_11.png" id="5_pqcr1"]
+[ext_resource type="Texture2D" uid="uid://bnnoback5ieh0" path="res://Textures/Weapons/Projectiles/fire/fire_column_medium_12.png" id="6_y8ys3"]
+[ext_resource type="Texture2D" uid="uid://y74dgwr6oe7n" path="res://Textures/Weapons/Projectiles/fire/fire_column_medium_13.png" id="7_udmqg"]
+[ext_resource type="Texture2D" uid="uid://d4er7ctk8aggd" path="res://Textures/Weapons/Projectiles/fire/fire_column_medium_14.png" id="8_6udcu"]
+[ext_resource type="Texture2D" uid="uid://dmu4j6i33xaie" path="res://Textures/Weapons/Projectiles/fire/fire_column_medium_1.png" id="9_7mq2b"]
+[ext_resource type="Texture2D" uid="uid://ywels3fsah0n" path="res://Textures/Weapons/Projectiles/fire/fire_column_medium_2.png" id="10_dtqnq"]
+[ext_resource type="Texture2D" uid="uid://ba64no4x8ofle" path="res://Textures/Weapons/Projectiles/fire/fire_column_medium_3.png" id="11_p5e1n"]
+[ext_resource type="Texture2D" uid="uid://ck38nta7ryi3y" path="res://Textures/Weapons/Projectiles/fire/fire_column_medium_4.png" id="12_ix5tg"]
+[ext_resource type="Texture2D" uid="uid://cqrxvm2lg2ctq" path="res://Textures/Weapons/Projectiles/fire/fire_column_medium_5.png" id="13_u1200"]
+[ext_resource type="Texture2D" uid="uid://c3n1dlnn1i2u1" path="res://Textures/Weapons/Projectiles/fire/fire_column_medium_6.png" id="14_dbe6v"]
+[ext_resource type="Texture2D" uid="uid://di050d5c0nobd" path="res://Textures/Weapons/Projectiles/fire/fire_column_medium_7.png" id="15_3qalh"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_todh5"]
 points = PackedVector2Array(180, -30, 190, 0, 180, 30, 160, 50, 0, 0, 160, -50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bsqrh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_ix5tg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_u1200")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_dbe6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_3qalh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3h5wl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q507s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3h5wl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q507s")
+}],
+"loop": true,
+"name": &"fire_burning",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3h5wl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q507s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_g0l5k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pqcr1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_y8ys3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_udmqg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6udcu")
+}],
+"loop": false,
+"name": &"fire_end",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_7mq2b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_dtqnq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_p5e1n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ix5tg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_u1200")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_dbe6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_3qalh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3h5wl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q507s")
+}],
+"loop": false,
+"name": &"fire_start",
+"speed": 5.0
+}]
 
 [node name="Flame" type="Area2D"]
 collision_layer = 128
@@ -15,9 +118,13 @@ fire_damage = 10
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("ConvexPolygonShape2D_todh5")
 
-[node name="flameImage" type="Sprite2D" parent="."]
-position = Vector2(158, 1)
-texture = ExtResource("1_ndsm6")
+[node name="flameImage" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+rotation = 1.5707964
+scale = Vector2(3.0414672, 3.8373573)
+sprite_frames = SubResource("SpriteFrames_bsqrh")
+animation = &"fire_end"
+offset = Vector2(0, -35)
 
 [node name="flameDuration" type="Timer" parent="."]
 unique_name_in_owner = true

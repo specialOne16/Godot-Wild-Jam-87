@@ -6,6 +6,7 @@ var direction := Vector2.ZERO
 @export var fire_damage : = 80
 @onready var flame_duration: Timer = %flameDuration
 @onready var flame_damage_tick: Timer = %flameDamageTick
+@onready var flame_image: AnimatedSprite2D = %flameImage
 
 var damaged_enemies: Array
 
@@ -28,10 +29,11 @@ func connect_signals() -> void:
 func fire():
 	var flame_tween = get_tree().create_tween().set_parallel()
 	flame_tween.tween_property(self, "scale", Vector2(1,1), .25).from(Vector2.ZERO)
-	
 	flame_duration.start()
 
 	# Play particles/sound if needed
+	flame_image.play("fire_start")
+	flame_image.play("fire_burning")
 	
 func on_body_entered(body):
 	damaged_enemies.append(body)
@@ -49,6 +51,8 @@ func apply_damage() -> void:
 			flame_damage_tick.stop()
 			
 func fire_retract():
-	var tween = get_tree().create_tween()
-	tween.tween_property(self, "scale", Vector2.ZERO, .25).from(Vector2(1,1))
+	
+	flame_image.play("fire_end")
+	await flame_image.animation_finished
+	self.scale = Vector2.ZERO
 	flame_duration.stop()

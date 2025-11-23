@@ -54,7 +54,7 @@ func _process(_delta: float) -> void:
 		nearest_enemy_direction = (nearest_enemy_body.global_position - flame_thrower_sprite.global_position).normalized()
 		nearest_enemy_rotation = nearest_enemy_direction.angle()
 		# 0.1 = rotation speed (lower is slower, higher is faster)
-		flame_pivot.rotation = lerp_angle(flame_pivot.rotation, nearest_enemy_rotation, 1)
+		flame_pivot.rotation = lerp_angle(flame_pivot.rotation, nearest_enemy_rotation, 0.02)
 		
 
 func zombie_died(body: Node2D) -> void:
@@ -63,7 +63,6 @@ func zombie_died(body: Node2D) -> void:
 
 func fire_bullet() -> void:
 	flame.direction = nearest_enemy_direction.normalized()
-	flame.global_position = global_position
 	flame.fire()
 
 func enemy_inside(body: Node2D) -> void:
