@@ -1,13 +1,14 @@
 extends Area2D
 class_name MortarTower
 
-@export var tower_damage: int = 10
-@export var tower_hp : int = 100
+@export var tower_damage: float = 10
+@export var tower_hp : float = 100
 
 @onready var mortar_damage_range: CollisionShape2D = %MortarDamageRange
 @onready var mortar_detection_range: CollisionShape2D = %MortarDetectionRange
 @onready var mortar_fire_rate: Timer = %MortarFireRate
 @onready var mortar_tower_hp_bar: TextureProgressBar = %MortarTowerHPBar
+@onready var mortar_animated_sprite: AnimatedSprite2D = %mortarAnimatedSprite
 
 
 var is_enemy_inside : bool = false
@@ -41,18 +42,19 @@ func _process(_delta: float) -> void:
 		
 	if is_enemy_inside == true:
 		nearest_enemy_direction = (nearest_enemy_body.global_position - global_position).normalized()
-		# TODO: We will need the gun position and gun to look at
-		#gun.look_at(nearest_enemy_body.global_position)
-
+		
+		
 func zombie_died(body: Node2D) -> void:
 	enemies.erase(body)
 	nearest_enemy_body = get_nearest_enemy()
 
 func fire_bullet() -> void:
+	mortar_animated_sprite.play("mortar_fire")
 	var shell = mortar_shell.instantiate()
 	#shell.bullet_damage = tower_damage
 	var target_position = nearest_enemy_body.global_position
 	shell.direction = nearest_enemy_direction.normalized()
+	shell.shell_damage = tower_damage
 	shell.global_position = global_position
 	get_tree().current_scene.call_deferred("add_child",shell)
 	shell.launch(self.global_position, target_position)
@@ -68,7 +70,8 @@ func enemy_outside(body: Node2D) -> void:
 	enemies.erase(body)
 
 func damaged(damage: float) -> void:
-	pass
+	tower_hp -= damage
+
 
 func get_nearest_enemy():
 	if enemies.is_empty():

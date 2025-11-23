@@ -1,13 +1,84 @@
-[gd_scene load_steps=7 format=3 uid="uid://cx4x8tv8xh0l1"]
+[gd_scene load_steps=17 format=3 uid="uid://cx4x8tv8xh0l1"]
 
 [ext_resource type="Script" uid="uid://dtpxw5qgkbu3t" path="res://entities/towers/mortar_tower.gd" id="1_15o34"]
-[ext_resource type="Texture2D" uid="uid://dwcew2co30q1l" path="res://icon.svg" id="2_0f4t1"]
+[ext_resource type="Texture2D" uid="uid://b6q81yko53wa3" path="res://Textures/Weapons/Weapons/mortar_shoot.png" id="2_15o34"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0f4t1"]
+atlas = ExtResource("2_15o34")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l8qp"]
+atlas = ExtResource("2_15o34")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgggy"]
+atlas = ExtResource("2_15o34")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gh8ha"]
+atlas = ExtResource("2_15o34")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dewu1"]
+atlas = ExtResource("2_15o34")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11ehw"]
+atlas = ExtResource("2_15o34")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k261x"]
+atlas = ExtResource("2_15o34")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j52n3"]
+atlas = ExtResource("2_15o34")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lwca"]
+atlas = ExtResource("2_15o34")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bqu0u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0f4t1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1l8qp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgggy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gh8ha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dewu1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11ehw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k261x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j52n3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lwca")
+}],
+"loop": false,
+"name": &"mortar_fire",
+"speed": 10.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sh73x"]
-radius = 1161.9333
+radius = 236.00212
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wriij"]
-radius = 86.46965
+radius = 23.0
 
 [sub_resource type="Gradient" id="Gradient_bls4j"]
 offsets = PackedFloat32Array(0.43571427)
@@ -21,9 +92,14 @@ height = 3
 collision_layer = 64
 collision_mask = 99
 script = ExtResource("1_15o34")
+tower_damage = 100.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_0f4t1")
+[node name="mortarAnimatedSprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_bqu0u")
+animation = &"mortar_fire"
+frame = 8
+frame_progress = 1.0
 
 [node name="MortarDetectionRange" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
