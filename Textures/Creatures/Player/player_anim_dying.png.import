@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqffx56sk4f61"
-path="res://.godot/imported/player_anim.png-08e179a3ab95773e284633a93ca63717.ctex"
+uid="uid://q7ny4dfrlypv"
+path="res://.godot/imported/player_anim_dying.png-ebc14299e99c59068be625c1ca8bf52e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Creatures/Player/player_anim.png"
-dest_files=["res://.godot/imported/player_anim.png-08e179a3ab95773e284633a93ca63717.ctex"]
+source_file="res://Textures/Creatures/Player/player_anim_dying.png"
+dest_files=["res://.godot/imported/player_anim_dying.png-ebc14299e99c59068be625c1ca8bf52e.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqffx56sk4f61"
-path="res://.godot/imported/player_anim.png-08e179a3ab95773e284633a93ca63717.ctex"
+uid="uid://bb40dqxpbhhph"
+path="res://.godot/imported/heavy_melee_zombie_hurt.png-f1ba6b8470389e6f0e299217086f521c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Creatures/Player/player_anim.png"
-dest_files=["res://.godot/imported/player_anim.png-08e179a3ab95773e284633a93ca63717.ctex"]
+source_file="res://Textures/Creatures/Enemies/heavy_melee_zombie_hurt.png"
+dest_files=["res://.godot/imported/heavy_melee_zombie_hurt.png-f1ba6b8470389e6f0e299217086f521c.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqffx56sk4f61"
-path="res://.godot/imported/player_anim.png-08e179a3ab95773e284633a93ca63717.ctex"
+uid="uid://deivsuhdkc5qq"
+path="res://.godot/imported/wooden_wall_front.png-da6e947ab8af353b63a8f18869af2935.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Creatures/Player/player_anim.png"
-dest_files=["res://.godot/imported/player_anim.png-08e179a3ab95773e284633a93ca63717.ctex"]
+source_file="res://Textures/UI/wooden_wall_front.png"
+dest_files=["res://.godot/imported/wooden_wall_front.png-da6e947ab8af353b63a8f18869af2935.ctex"]
 
 [params]
 

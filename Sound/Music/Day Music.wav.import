@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bb7ljpaoo3ux5"
+path="res://.godot/imported/Day Music.wav-7df15795ca52c2fe0289004d8b80cf40.sample"
+
+[deps]
+
+source_file="res://Sound/Music/Day Music.wav"
+dest_files=["res://.godot/imported/Day Music.wav-7df15795ca52c2fe0289004d8b80cf40.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqffx56sk4f61"
-path="res://.godot/imported/player_anim.png-08e179a3ab95773e284633a93ca63717.ctex"
+uid="uid://qeh0bna5xwyt"
+path="res://.godot/imported/machine_gun_hurt.png-0010922d742f5559d06b5777fc4c5f2f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Creatures/Player/player_anim.png"
-dest_files=["res://.godot/imported/player_anim.png-08e179a3ab95773e284633a93ca63717.ctex"]
+source_file="res://Textures/Weapons/Weapons/machine_gun_hurt.png"
+dest_files=["res://.godot/imported/machine_gun_hurt.png-0010922d742f5559d06b5777fc4c5f2f.ctex"]
 
 [params]
 
