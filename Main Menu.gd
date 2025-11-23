@@ -1,10 +1,14 @@
 extends CanvasLayer
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var texture_rect: TextureRect = $TextureRect
+
 func _ready() -> void:
 	$VBoxContainer.visible = false
-	$AnimatedSprite2D.play("default")
+	animation_player.play("RESET")
 	
-	await $AnimatedSprite2D.animation_finished
+	await animation_player.animation_finished
+	texture_rect.visible = false
 	$VBoxContainer.visible = true
 
 

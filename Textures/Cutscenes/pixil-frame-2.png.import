@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://grdcxi5vf8fu"
-path="res://.godot/imported/cutscene.png-e3aa61210beecd3bdb74f925e8926cce.ctex"
+uid="uid://dpwip3mpxcbi0"
+path="res://.godot/imported/pixil-frame-2.png-39db43a4f672eadc0a9feb7e8fab1876.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Cutscenes/cutscene.png"
-dest_files=["res://.godot/imported/cutscene.png-e3aa61210beecd3bdb74f925e8926cce.ctex"]
+source_file="res://Textures/Cutscenes/pixil-frame-2.png"
+dest_files=["res://.godot/imported/pixil-frame-2.png-39db43a4f672eadc0a9feb7e8fab1876.ctex"]
 
 [params]
 
