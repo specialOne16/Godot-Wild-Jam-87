@@ -1,7 +1,89 @@
-[gd_scene load_steps=18 format=3 uid="uid://cinic2jo4wvuf"]
+[gd_scene load_steps=40 format=3 uid="uid://cinic2jo4wvuf"]
 
 [ext_resource type="Script" uid="uid://dy78rw4ryl71k" path="res://entities/towers/ranged_tower.gd" id="1_wriij"]
+[ext_resource type="Texture2D" uid="uid://cd0sbi4spj2ka" path="res://Textures/Weapons/Weapons/cannon_dying.png" id="2_r4n58"]
 [ext_resource type="Texture2D" uid="uid://cfdsu05i4b8po" path="res://Textures/Weapons/Weapons/cannon.png" id="2_wriij"]
+[ext_resource type="Texture2D" uid="uid://cjl1p6kj4x3j2" path="res://Textures/Weapons/Weapons/cannon_hurt.png" id="3_onqte"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6m5dq"]
+atlas = ExtResource("2_r4n58")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i558l"]
+atlas = ExtResource("2_r4n58")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_le6ko"]
+atlas = ExtResource("2_r4n58")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ls50"]
+atlas = ExtResource("2_r4n58")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lp5e"]
+atlas = ExtResource("2_r4n58")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mwpf"]
+atlas = ExtResource("2_r4n58")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dabq"]
+atlas = ExtResource("2_r4n58")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tofc"]
+atlas = ExtResource("2_r4n58")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_su024"]
+atlas = ExtResource("2_r4n58")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4skml"]
+atlas = ExtResource("2_r4n58")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_show2"]
+atlas = ExtResource("3_onqte")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pqxf"]
+atlas = ExtResource("3_onqte")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbo71"]
+atlas = ExtResource("3_onqte")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3vnm"]
+atlas = ExtResource("3_onqte")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xo06"]
+atlas = ExtResource("3_onqte")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfqp4"]
+atlas = ExtResource("3_onqte")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_177xv"]
+atlas = ExtResource("3_onqte")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onk42"]
+atlas = ExtResource("3_onqte")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwy4q"]
+atlas = ExtResource("3_onqte")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bb72h"]
+atlas = ExtResource("3_onqte")
+region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sh73x"]
 atlas = ExtResource("2_wriij")
@@ -45,15 +127,75 @@ region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6m5dq"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6m5dq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i558l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_le6ko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ls50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lp5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mwpf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dabq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tofc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_su024")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4skml")
+}],
 "loop": true,
 "name": &"canon_dying",
-"speed": 5.0
+"speed": 10.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_show2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pqxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbo71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3vnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xo06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfqp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_177xv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onk42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwy4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bb72h")
+}],
 "loop": true,
 "name": &"canon_hurt",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -118,6 +260,7 @@ unique_name_in_owner = true
 rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_6m5dq")
 animation = &"canon_shoot"
+frame_progress = 0.28806487
 
 [node name="RangedFiriningPosition" type="Marker2D" parent="CanonPivot"]
 unique_name_in_owner = true

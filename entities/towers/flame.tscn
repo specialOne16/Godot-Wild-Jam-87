@@ -120,6 +120,7 @@ shape = SubResource("ConvexPolygonShape2D_todh5")
 
 [node name="flameImage" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 rotation = 1.5707964
 scale = Vector2(3.0414672, 3.8373573)
 sprite_frames = SubResource("SpriteFrames_bsqrh")
