@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://devxha63j6w0k"]
+[gd_scene load_steps=14 format=3 uid="uid://devxha63j6w0k"]
 
 [ext_resource type="Script" uid="uid://pfa3i7hrkhc" path="res://entities/enemies/base/base_enemy.gd" id="1_8xa7x"]
 [ext_resource type="Script" uid="uid://bwxyngoubhotg" path="res://state_machine/state_machine.gd" id="2_6pcee"]
@@ -11,8 +11,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_8xa7x"]
 radius = 18.110771
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_b8buh"]
+radius = 42.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_6pcee"]
-radius = 200.0
+radius = 150.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ccd4k"]
 radius = 26.0
@@ -41,14 +44,16 @@ shape = SubResource("CircleShape2D_8xa7x")
 [node name="ZombieMeleeAttackRange" type="Area2D" parent="."]
 unique_name_in_owner = true
 collision_layer = 0
+collision_mask = 73
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZombieMeleeAttackRange"]
 unique_name_in_owner = true
-shape = SubResource("CircleShape2D_6pcee")
+shape = SubResource("CircleShape2D_b8buh")
 
 [node name="ZombieRangedAttackRange" type="Area2D" parent="."]
 unique_name_in_owner = true
 collision_layer = 0
+collision_mask = 73
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZombieRangedAttackRange"]
 shape = SubResource("CircleShape2D_6pcee")
@@ -56,6 +61,7 @@ shape = SubResource("CircleShape2D_6pcee")
 [node name="ZombieStartMeleeAttackRange" type="Area2D" parent="."]
 unique_name_in_owner = true
 collision_layer = 0
+collision_mask = 73
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZombieStartMeleeAttackRange"]
 shape = SubResource("CircleShape2D_ccd4k")
