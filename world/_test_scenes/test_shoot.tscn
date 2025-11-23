@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsaimtmaf0bmf"]
+[gd_scene load_steps=6 format=3 uid="uid://dsaimtmaf0bmf"]
 
 [ext_resource type="PackedScene" uid="uid://dnrx1cp8p8huy" path="res://entities/player/player.tscn" id="2_844po"]
 [ext_resource type="PackedScene" uid="uid://mh1quh77s5gw" path="res://world/enemy_spawner/enemy_spawner.tscn" id="2_df015"]
 [ext_resource type="PackedScene" uid="uid://b77jx6vgrjkhp" path="res://world/day_night_cycle/day_night_cycle.tscn" id="3_4y3cs"]
 [ext_resource type="PackedScene" uid="uid://du0ivfuf4ixnq" path="res://world/resource/resource_gui.tscn" id="4_cgumk"]
-[ext_resource type="PackedScene" uid="uid://cinic2jo4wvuf" path="res://entities/towers/ranged_tower.tscn" id="5_844po"]
-[ext_resource type="PackedScene" uid="uid://dsxh4q3p0o4xt" path="res://entities/towers/flame_thrower.tscn" id="6_ef1bp"]
+[ext_resource type="PackedScene" uid="uid://cx4x8tv8xh0l1" path="res://entities/towers/mortar_tower.tscn" id="5_844po"]
 
 [node name="TestShoot" type="Node2D"]
 
@@ -19,7 +18,6 @@ visible = false
 
 [node name="DayNightCycle" parent="CanvasLayer" instance=ExtResource("3_4y3cs")]
 morning_timer_time = 1.0
-dusk_timer_time = 1.0
 night_timer_time = 10.0
 
 [node name="EnemySpawner" parent="." node_paths=PackedStringArray("player", "world") instance=ExtResource("2_df015")]
@@ -37,9 +35,5 @@ world = NodePath("..")
 
 [node name="ResourceGui" parent="CanvasLayer2" instance=ExtResource("4_cgumk")]
 
-[node name="RangedTower" parent="." instance=ExtResource("5_844po")]
-position = Vector2(324, 156)
-
-[node name="FlameThrower" parent="." instance=ExtResource("6_ef1bp")]
-position = Vector2(332, 460)
-tower_damage = 20
+[node name="Mortar" parent="." instance=ExtResource("5_844po")]
+position = Vector2(379, 294)
