@@ -18,6 +18,7 @@ const ZOMBIE_SPAWNER_COUNT = 10
 func _ready() -> void:
 	MusicPlayer.death.stop()
 	MusicPlayer.day_music.play()
+	EventBus.restart()
 	
 	player.position = MAP_SIZE / 2
 	init_resource_spawner()
