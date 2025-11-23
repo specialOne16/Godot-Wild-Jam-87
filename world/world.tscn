@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ch7uknc2sbsuk" path="res://crafting/crafting_menu.tscn" id="4_fn3g3"]
 [ext_resource type="PackedScene" uid="uid://c3aa1scxrd44c" path="res://world/building/builder.tscn" id="4_sc4t8"]
 [ext_resource type="PackedScene" uid="uid://bvdou5wcx05tn" path="res://menu/end_game_menu.tscn" id="8_4papg"]
-[ext_resource type="Texture2D" uid="uid://0dxfqf7o4ni1" path="res://Textures/Objects/ground.png" id="8_ai45w"]
+[ext_resource type="Texture2D" uid="uid://djw1vb6h5anqu" path="res://Textures/Objects/ground.png" id="8_ai45w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fn3g3"]
 texture = ExtResource("8_ai45w")
@@ -71,8 +71,8 @@ world = NodePath("..")
 [node name="DayNightCycle" parent="CanvasLayer" instance=ExtResource("2_tcf2h")]
 unique_name_in_owner = true
 z_index = 1
-morning_timer_time = 15.0
-night_timer_time = 20.0
+morning_timer_time = 20.0
+night_timer_time = 15.0
 metadata/_edit_use_anchors_ = true
 
 [node name="ResourceGui" parent="CanvasLayer" instance=ExtResource("3_mmdvd")]
