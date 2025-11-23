@@ -5,9 +5,15 @@ class_name EnemySpawner
 
 const BASE_ENEMY = preload("uid://devxha63j6w0k")
 
+const FAST_MELEE_ZOMBIE_DATA = preload("uid://5yq5di0dnjs")
+const HEAVY_MELEE_ZOMBIE_DATA = preload("uid://vjybrkwxjgv8")
+const NORMAL_RANGE_ZOMBIE_DATA = preload("uid://cea7fjn1hn54h")
 const SLOW_MELEE_ZOMBIE_DATA = preload("uid://dd6b64bybbe8m")
 
 const ENEMY_TYPES: Array[Resource] = [
+	FAST_MELEE_ZOMBIE_DATA,
+	HEAVY_MELEE_ZOMBIE_DATA,
+	NORMAL_RANGE_ZOMBIE_DATA,
 	SLOW_MELEE_ZOMBIE_DATA
 ]
 

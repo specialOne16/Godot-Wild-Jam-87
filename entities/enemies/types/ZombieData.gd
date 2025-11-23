@@ -3,6 +3,8 @@ class_name ZombieData
 
 @export var zombie_health: float = 100.00
 @export var zombie_damage: float = 40
+@export var move_speed: float = 100
+@export var is_melee := true
 @export var texture: PackedScene
 
 var drops_list_items: Array =['wood','wood','wood','wood','wood','stone','stone','stone','steel','steel', 'hp','hp','hp','hp','damage','damage']

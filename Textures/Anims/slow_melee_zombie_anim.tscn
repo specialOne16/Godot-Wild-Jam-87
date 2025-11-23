@@ -114,7 +114,10 @@ animations = [{
 
 [node name="SlowMeleeZombieAnim" type="Node2D"]
 script = ExtResource("1_5c2rq")
+impact_delay = 0.4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5c2rq")
-animation = &"walk"
+animation = &"attack"
+frame = 5
+frame_progress = 1.0

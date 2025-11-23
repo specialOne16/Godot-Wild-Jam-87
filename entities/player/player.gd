@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 
-@export var speed = 400.0
+@export var speed = 250.0
 @export var max_health = 100.0
 @export var bullet_damage = 50.0
 
@@ -84,6 +84,7 @@ func fire_bullet() -> void:
 	bullet.direction = nearest_enemy_direction.normalized()
 	bullet.global_position = bullet_spawn.global_position
 	bullet.damage = bullet_damage
+	bullet.set_collision_mask_value(2, true)
 	get_tree().current_scene.call_deferred("add_child",bullet)
 
 func get_nearest_enemy():
