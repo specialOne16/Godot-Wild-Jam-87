@@ -1,7 +1,6 @@
 extends RigidBody2D
 class_name BaseEnemy
 
-
 @export var player: Player
 @export var data: ZombieData
 
@@ -20,6 +19,9 @@ func _ready() -> void:
 	anim = data.texture.instantiate()
 	anim.position = PERSPECTIVE_OFFSET
 	add_child(anim)
+
+func zombie_died(body: Node2D):
+	return(body)
 
 func damaged(damage: float) -> void:
 	enemy_health -= damage;
@@ -44,3 +46,5 @@ func drop_items():
 		var drops := DROPS.instantiate()
 		drops.global_position = self.global_position + final_dir * distance
 		get_tree().current_scene.call_deferred("add_child",drops)
+
+	EventBus.zombieDead.emit(self)

@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://cinic2jo4wvuf"]
+
+[ext_resource type="Texture2D" uid="uid://dwcew2co30q1l" path="res://icon.svg" id="1_2ktyk"]
+[ext_resource type="Script" uid="uid://dy78rw4ryl71k" path="res://entities/towers/ranged_tower.gd" id="1_wriij"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sh73x"]
+radius = 82.764725
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wriij"]
+radius = 755.0325
+
+[sub_resource type="Gradient" id="Gradient_bls4j"]
+offsets = PackedFloat32Array(0.43571427)
+colors = PackedColorArray(0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wriij"]
+gradient = SubResource("Gradient_bls4j")
+height = 3
+
+[node name="RangedTower" type="Area2D"]
+script = ExtResource("1_wriij")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2ktyk")
+
+[node name="RangeTowerDamageRange" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_sh73x")
+
+[node name="rangeTowerHitRange" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_wriij")
+
+[node name="towerBulletInterval" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -32.0
+offset_top = -38.0
+offset_right = 32.0
+offset_bottom = -34.0
+
+[node name="RangedTowerHPBar" type="TextureProgressBar" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_progress = SubResource("GradientTexture2D_wriij")

@@ -19,7 +19,7 @@ var is_enemy_inside : bool = false
 var nearest_enemy_direction : Vector2
 var nearest_enemy_rotation: float
 var nearest_enemy_body : Node2D
-var enemies : Array = ResourceManager.enemy_list
+var enemies : Array
 
 var current_health = max_health :
 	set(value):
@@ -56,6 +56,7 @@ func connect_signals() -> void:
 	zombie_attack.zombie_entered.connect(enemy_inside)
 	zombie_attack.zombie_left.connect(enemy_outside)
 	bullet_interval.timeout.connect(fire_bullet)
+	EventBus.connect("zombieDead",zombie_died)
 	
 
 func enemy_inside(body: Node2D) -> void:
@@ -74,6 +75,8 @@ func get_input():
 	else:
 		player_anim.idle()
 
+func zombie_died(body: Node2D) -> void:
+	enemies.erase(body)
 
 func _physics_process(_delta):
 	get_input()
