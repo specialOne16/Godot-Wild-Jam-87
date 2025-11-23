@@ -72,7 +72,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pbuea")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 12.0
 }, {
@@ -95,7 +95,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pbuea")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_dying",
 "speed": 12.0
 }, {
@@ -118,7 +118,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pbuea")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_hurt",
 "speed": 12.0
 }, {
@@ -193,7 +193,10 @@ animations = [{
 
 [node name="PlayerAnim" type="Node2D"]
 script = ExtResource("1_1df53")
+impact_delay = 0.4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pbuea")
-animation = &"walk_hurt"
+animation = &"attack"
+frame = 5
+frame_progress = 1.0

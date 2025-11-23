@@ -3,14 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://coivkx1on52v6" path="res://Textures/Weapons/Weapons/tower.png" id="1_bui44"]
 [ext_resource type="Script" uid="uid://mosl5fbjll84" path="res://world/building/building.gd" id="1_jtgno"]
 [ext_resource type="Texture2D" uid="uid://dwcew2co30q1l" path="res://icon.svg" id="1_t5c8g"]
-[ext_resource type="PackedScene" uid="uid://bsh3fomaheq3r" path="res://entities/towers/flamethrower_tower.tscn" id="2_bui44"]
+[ext_resource type="PackedScene" uid="uid://dsxh4q3p0o4xt" path="res://entities/towers/flame_thrower.tscn" id="2_bui44"]
 
 [resource]
 script = ExtResource("1_jtgno")
 name = "Flamethrower"
-wood_cost = 10
-stone_cost = 10
-steel_cost = 10
 recipe_texture = ExtResource("1_bui44")
 texture = ExtResource("1_t5c8g")
 scene = ExtResource("2_bui44")

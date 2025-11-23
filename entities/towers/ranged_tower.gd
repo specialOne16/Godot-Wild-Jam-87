@@ -51,7 +51,7 @@ func zombie_died(body: Node2D) -> void:
 
 func fire_bullet() -> void:
 	var bullet := bulletScene.instantiate()
-	bullet.bullet_damage = tower_damage
+	bullet.damage = tower_damage
 	bullet.direction = nearest_enemy_direction.normalized()
 	# bullet will be shot from center of tower. Can place a marker to change it
 	bullet.global_position = global_position

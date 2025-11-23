@@ -8,9 +8,6 @@
 [resource]
 script = ExtResource("1_ih1d4")
 name = "Cannon"
-wood_cost = 10
-stone_cost = 10
-steel_cost = 10
 recipe_texture = ExtResource("1_ipven")
 texture = ExtResource("1_e4qws")
 scene = ExtResource("2_ipven")

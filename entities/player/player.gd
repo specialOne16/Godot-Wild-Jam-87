@@ -22,6 +22,8 @@ var nearest_enemy_rotation: float
 var nearest_enemy_body : Node2D
 var enemies : Array
 
+var attacking := false
+
 var current_health = max_health :
 	set(value):
 		if value > max_health: current_health = max_health
@@ -70,6 +72,10 @@ func enemy_outside(body: Node2D) -> void:
 	enemies.erase(body)
 	
 func get_input():
+	if attacking:
+		velocity = Vector2.ZERO
+		return
+	
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
 	if input_direction:
@@ -91,7 +97,6 @@ func fire_bullet() -> void:
 	bullet.direction = nearest_enemy_direction.normalized()
 	bullet.global_position = bullet_spawn.global_position
 	bullet.damage = bullet_damage
-	bullet.rotation = bullet.direction.angle()
 	bullet.set_collision_mask_value(2, true)
 	get_tree().current_scene.call_deferred("add_child",bullet)
 

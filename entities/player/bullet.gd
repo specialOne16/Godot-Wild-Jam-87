@@ -13,6 +13,7 @@ var direction := Vector2.ZERO
 func _ready():
 	bullet_start()
 	sprite_2d.texture = texture
+	rotation = direction.angle()
 	bullet_alive.connect("timeout", destroy_bullet)
 	self.connect("body_entered", _on_body_entered)
 	pass

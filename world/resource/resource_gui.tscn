@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://du0ivfuf4ixnq"]
+[gd_scene load_steps=5 format=3 uid="uid://du0ivfuf4ixnq"]
 
 [ext_resource type="Script" uid="uid://1tk7212r2xxa" path="res://world/resource/resource_gui.gd" id="1_kiumf"]
+[ext_resource type="Texture2D" uid="uid://dfmxchwxe1jvu" path="res://Textures/UI/wood.png" id="2_pflm7"]
+[ext_resource type="Texture2D" uid="uid://dd1mo8jc4rxip" path="res://Textures/UI/stone.png" id="3_2saku"]
+[ext_resource type="Texture2D" uid="uid://cics8bnvo8mlp" path="res://Textures/UI/steel.png" id="4_m73cw"]
 
 [node name="ResourceGui" type="Control"]
 layout_mode = 3
@@ -34,12 +37,13 @@ layout_mode = 2
 theme_override_constants/separation = 2
 
 [node name="WoodContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 14)
 layout_mode = 2
 
-[node name="WoodResource" type="Label" parent="Panel/MarginContainer/VBoxContainer/WoodContainer"]
+[node name="WoodResource" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/WoodContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 6
-text = "Wood"
+texture = ExtResource("2_pflm7")
+expand_mode = 3
 
 [node name="WoodValue" type="Label" parent="Panel/MarginContainer/VBoxContainer/WoodContainer"]
 unique_name_in_owner = true
@@ -49,12 +53,13 @@ theme_override_font_sizes/font_size = 6
 text = "0"
 
 [node name="StoneContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 14)
 layout_mode = 2
 
-[node name="StoneResource" type="Label" parent="Panel/MarginContainer/VBoxContainer/StoneContainer"]
+[node name="StoneResource" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/StoneContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 6
-text = "Stone"
+texture = ExtResource("3_2saku")
+expand_mode = 3
 
 [node name="StoneValue" type="Label" parent="Panel/MarginContainer/VBoxContainer/StoneContainer"]
 unique_name_in_owner = true
@@ -64,12 +69,13 @@ theme_override_font_sizes/font_size = 6
 text = "0"
 
 [node name="SteelContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 14)
 layout_mode = 2
 
-[node name="SteelResource" type="Label" parent="Panel/MarginContainer/VBoxContainer/SteelContainer"]
+[node name="SteelResource" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/SteelContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 6
-text = "Steel"
+texture = ExtResource("4_m73cw")
+expand_mode = 3
 
 [node name="SteelValue" type="Label" parent="Panel/MarginContainer/VBoxContainer/SteelContainer"]
 unique_name_in_owner = true

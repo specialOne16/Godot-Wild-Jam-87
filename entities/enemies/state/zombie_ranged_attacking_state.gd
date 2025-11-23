@@ -25,6 +25,5 @@ func shot_bullet():
 	bullet.global_position = nozzle.global_position
 	bullet.damage = enemy.data.zombie_damage
 	bullet.texture = BULLET_THIN
-	bullet.rotation = bullet.direction.angle()
 	bullet.set_collision_mask_value(1, true)
 	get_tree().current_scene.call_deferred("add_child",bullet)
