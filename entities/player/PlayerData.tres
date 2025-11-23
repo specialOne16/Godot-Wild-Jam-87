@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="PlayerData" load_steps=2 format=3 uid="uid://b6otg17jy1a75"]
-
-[ext_resource type="Script" uid="uid://ddli6qlkg6s88" path="res://entities/player/playerData.gd" id="1_arklo"]
-
-[resource]
-script = ExtResource("1_arklo")
-weapon_damage = 0.0
-metadata/_custom_type_script = "uid://ddli6qlkg6s88"

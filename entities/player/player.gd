@@ -2,7 +2,9 @@ extends CharacterBody2D
 class_name Player
 
 
-@export var speed = 400
+@export var speed = 250.0
+@export var max_health = 100.0
+@export var bullet_damage = 50.0
 
 @onready var bullet_spawn: Marker2D = %bulletspawn
 @onready var zombie_attack: Attack = %ZombieAttack
@@ -12,7 +14,6 @@ class_name Player
 @onready var player_anim: BaseAnim = $PlayerAnim
 
 var bulletScene : PackedScene = preload("uid://c0xqahtmvo8kf")
-var player_data := ResourceManager.player_data_rm
 
 var is_enemy_inside : bool = false
 var nearest_enemy_direction : Vector2
@@ -20,13 +21,18 @@ var nearest_enemy_rotation: float
 var nearest_enemy_body : Node2D
 var enemies : Array
 
+var current_health = max_health :
+	set(value):
+		if value > max_health: current_health = max_health
+		else: current_health = value
+
 func _ready() -> void:
-	connect_signals()
+	player_hp_bar.max_value = max_health
+	player_hp_bar.value = current_health
 	
+	connect_signals()
+
 func _process(_delta: float) -> void:
-	player_hp_bar.value = player_data.player_health
-	if player_data.player_health <= 0:
-		queue_free()
 	
 	if enemies.is_empty() == false:
 		nearest_enemy_body = get_nearest_enemy()
@@ -38,6 +44,14 @@ func _process(_delta: float) -> void:
 	if is_enemy_inside == true:
 		nearest_enemy_direction = (nearest_enemy_body.global_position - gun.global_position).normalized()
 		gun.look_at(nearest_enemy_body.global_position)
+
+func damaged(amount: float):
+	current_health -= amount
+	player_hp_bar.value = current_health
+	
+	if current_health <= 0:
+		# TODO show end scene
+		get_tree().reload_current_scene.call_deferred()
 
 func connect_signals() -> void:
 	zombie_attack.zombie_entered.connect(enemy_inside)
@@ -70,10 +84,11 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func fire_bullet() -> void:
-	var bullet := bulletScene.instantiate()
-	bullet.bullet_damage = player_data.weapon_damage
+	var bullet: Bullet = bulletScene.instantiate()
 	bullet.direction = nearest_enemy_direction.normalized()
 	bullet.global_position = bullet_spawn.global_position
+	bullet.damage = bullet_damage
+	bullet.set_collision_mask_value(2, true)
 	get_tree().current_scene.call_deferred("add_child",bullet)
 
 func get_nearest_enemy():

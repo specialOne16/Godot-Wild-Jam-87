@@ -1,73 +1,72 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwklgo80abtcq"]
+[gd_scene load_steps=10 format=3 uid="uid://cwklgo80abtcq"]
 
 [ext_resource type="Script" uid="uid://cbywyofvi4r42" path="res://Textures/Anims/base_anim.gd" id="1_1df53"]
 [ext_resource type="Texture2D" uid="uid://bepya4j8wc0uj" path="res://Textures/Creatures/Player/player_anim.png" id="1_slhj7"]
 
-[sub_resource type="Animation" id="Animation_vtpkp"]
-resource_name = "Idle"
-length = 0.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_1df53"]
+atlas = ExtResource("1_slhj7")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="Animation" id="Animation_oqd0q"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvv71"]
+atlas = ExtResource("1_slhj7")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="Animation" id="Animation_yj53a"]
-resource_name = "Walk"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 4, 2, 4, 0, 3, 1, 3]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfk30"]
+atlas = ExtResource("1_slhj7")
+region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lfk5w"]
-_data = {
-&"Idle": SubResource("Animation_vtpkp"),
-&"RESET": SubResource("Animation_oqd0q"),
-&"Walk": SubResource("Animation_yj53a")
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_iy2k1"]
+atlas = ExtResource("1_slhj7")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_og4tn"]
+atlas = ExtResource("1_slhj7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pe04a"]
+atlas = ExtResource("1_slhj7")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pbuea"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1df53")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvv71")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfk30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iy2k1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_og4tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pe04a")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
 
 [node name="PlayerAnim" type="Node2D"]
 script = ExtResource("1_1df53")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_slhj7")
-hframes = 6
-vframes = 6
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_lfk5w")
-}
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pbuea")
+animation = &"walk"
+frame_progress = 0.94422936
