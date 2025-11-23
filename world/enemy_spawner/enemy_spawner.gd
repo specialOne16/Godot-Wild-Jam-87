@@ -20,11 +20,18 @@ const ENEMY_TYPES: Array[Resource] = [
 @export var player: Player
 @export var world: Node2D
 @onready var enemy_spawn_timer: Timer = %EnemySpawnTimer
+@onready var enemy_spawn_timer_night_only: Timer = %EnemySpawnTimerNightOnly
 
 var spawner_index: int
 
 func _ready() -> void:
-	EventBus.time_changed.connect(func(time): if time == "NIGHT": spawn_enemy())
+	EventBus.time_changed.connect(
+		func(time): 
+			if time == "NIGHT": 
+				enemy_spawn_timer_night_only.start()
+			else:
+				enemy_spawn_timer_night_only.stop()
+	)
 
 func _process(_delta: float) -> void:
 	if player:
