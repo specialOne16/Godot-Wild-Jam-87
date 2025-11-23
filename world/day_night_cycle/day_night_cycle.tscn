@@ -42,3 +42,6 @@ offset_right = 59.0
 offset_bottom = 39.0
 theme_override_constants/outline_size = 4
 text = "Day 1"
+
+[node name="DecayTimer" type="Timer" parent="."]
+unique_name_in_owner = true
