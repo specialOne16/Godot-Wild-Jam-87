@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp3sdqj83832"
-path="res://.godot/imported/normal_range_zombie.png-cabf716cb3e860d8a85dc321a4e35970.ctex"
+uid="uid://cdt60d3eqegd7"
+path="res://.godot/imported/pixilart-sprite (15).png-3279fbf9216510df51c9f17c26d8487a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Creatures/Enemies/normal_range_zombie.png"
-dest_files=["res://.godot/imported/normal_range_zombie.png-cabf716cb3e860d8a85dc321a4e35970.ctex"]
+source_file="res://Textures/Weapons/Projectiles/pixilart-sprite (15).png"
+dest_files=["res://.godot/imported/pixilart-sprite (15).png-3279fbf9216510df51c9f17c26d8487a.ctex"]
 
 [params]
 
