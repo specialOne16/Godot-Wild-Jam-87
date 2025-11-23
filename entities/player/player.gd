@@ -51,7 +51,7 @@ func damaged(amount: float):
 	
 	if current_health <= 0:
 		# TODO show end scene
-		get_tree().reload_current_scene()
+		get_tree().reload_current_scene.call_deferred()
 
 func connect_signals() -> void:
 	zombie_attack.zombie_entered.connect(enemy_inside)

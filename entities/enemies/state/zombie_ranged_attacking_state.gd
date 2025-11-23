@@ -7,6 +7,7 @@ const BULLET = preload("uid://c0xqahtmvo8kf")
 @onready var nozzle: Node2D = $"../../Nozzle"
 
 func enter() -> void:
+	enemy.linear_velocity = Vector2.ZERO
 	enemy.anim.impact.connect(shot_bullet)
 	await enemy.anim.attack()
 	
@@ -16,6 +17,8 @@ func exit() -> void:
 	enemy.anim.impact.disconnect(shot_bullet)
 
 func shot_bullet():
+	if not is_active: return
+	
 	var bullet: Bullet = BULLET.instantiate()
 	bullet.direction = enemy.global_position.direction_to(enemy.player.global_position)
 	bullet.global_position = nozzle.global_position

@@ -7,7 +7,6 @@ class_name ZombieMeleeAttackingState
 func enter() -> void:
 	enemy.anim.impact.connect(deal_damage)
 	await enemy.anim.attack()
-	
 	finished.emit(zombie_idle_state)
 
 func process(_delta: float) -> void:

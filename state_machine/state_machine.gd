@@ -10,6 +10,7 @@ func _ready() -> void:
 	await owner.ready
 	state = initial_state if initial_state else get_child(0)
 	state.enter()
+	state.is_active = true
 
 func _unhandled_input(event: InputEvent) -> void:
 	state.handle_input(event)
@@ -24,6 +25,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _transition_to_next_state(target_state: State) -> void:
+	state.is_active = false
 	state.exit()
 	state = target_state
 	state.enter()
+	state.is_active = true
