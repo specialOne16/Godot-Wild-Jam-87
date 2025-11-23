@@ -1,14 +1,76 @@
-[gd_scene load_steps=8 format=3 uid="uid://dsxh4q3p0o4xt"]
+[gd_scene load_steps=13 format=3 uid="uid://dsxh4q3p0o4xt"]
 
 [ext_resource type="Script" uid="uid://bh407fbeqhisy" path="res://entities/towers/flame_thrower.gd" id="1_7ibb3"]
-[ext_resource type="Texture2D" uid="uid://dwcew2co30q1l" path="res://icon.svg" id="2_lsv1i"]
+[ext_resource type="Texture2D" uid="uid://bvxvqysf55y43" path="res://Textures/Weapons/Weapons/flamethrower.png" id="2_lsv1i"]
 [ext_resource type="PackedScene" uid="uid://b6t8fb81s2cwj" path="res://entities/towers/flame.tscn" id="3_lsv1i"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8py86"]
+atlas = ExtResource("2_lsv1i")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3pic"]
+atlas = ExtResource("2_lsv1i")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnwg1"]
+atlas = ExtResource("2_lsv1i")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kahx"]
+atlas = ExtResource("2_lsv1i")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4iody"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8py86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3pic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnwg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnwg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnwg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnwg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnwg1")
+}],
+"loop": false,
+"name": &"flameStart",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnwg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kahx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3pic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8py86")
+}],
+"loop": false,
+"name": &"flameend",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_sh73x"]
-radius = 1161.9333
+radius = 202.00247
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wriij"]
-radius = 86.46965
+radius = 25.0
 
 [sub_resource type="Gradient" id="Gradient_bls4j"]
 offsets = PackedFloat32Array(0.43571427)
@@ -23,8 +85,18 @@ collision_layer = 64
 collision_mask = 99
 script = ExtResource("1_7ibb3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_lsv1i")
+[node name="FlamePivot" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="flameThrowerSprite" type="AnimatedSprite2D" parent="FlamePivot"]
+unique_name_in_owner = true
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_4iody")
+animation = &"flameStart"
+
+[node name="Flame" parent="FlamePivot" instance=ExtResource("3_lsv1i")]
+unique_name_in_owner = true
+position = Vector2(14, 0)
 
 [node name="FlameThrowerDetectionRange" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
@@ -42,9 +114,9 @@ wait_time = 1.5
 layout_mode = 3
 anchors_preset = 0
 offset_left = -32.0
-offset_top = -38.0
+offset_top = -16.0
 offset_right = 32.0
-offset_bottom = -34.0
+offset_bottom = -12.0
 
 [node name="FlameThrowerHPBar" type="TextureProgressBar" parent="Control"]
 unique_name_in_owner = true
@@ -54,7 +126,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+value = 100.0
 texture_progress = SubResource("GradientTexture2D_15o34")
-
-[node name="Flame" parent="." instance=ExtResource("3_lsv1i")]
-unique_name_in_owner = true

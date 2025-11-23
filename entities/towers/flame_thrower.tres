@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="Building" load_steps=5 format=3 uid="uid://1x231to28qqo"]
+[gd_resource type="Resource" script_class="Building" load_steps=4 format=3 uid="uid://1x231to28qqo"]
 
-[ext_resource type="Texture2D" uid="uid://coivkx1on52v6" path="res://Textures/Weapons/Weapons/tower.png" id="1_bui44"]
 [ext_resource type="Script" uid="uid://mosl5fbjll84" path="res://world/building/building.gd" id="1_jtgno"]
-[ext_resource type="Texture2D" uid="uid://dwcew2co30q1l" path="res://icon.svg" id="1_t5c8g"]
+[ext_resource type="Texture2D" uid="uid://brhkt5iyehnak" path="res://Textures/Weapons/Weapons/flamethrower_image.png" id="1_t5c8g"]
 [ext_resource type="PackedScene" uid="uid://dsxh4q3p0o4xt" path="res://entities/towers/flame_thrower.tscn" id="2_bui44"]
 
 [resource]
 script = ExtResource("1_jtgno")
 name = "Flamethrower"
-recipe_texture = ExtResource("1_bui44")
+wood_cost = 5
+stone_cost = 10
+steel_cost = 20
+recipe_texture = ExtResource("1_t5c8g")
 texture = ExtResource("1_t5c8g")
 scene = ExtResource("2_bui44")
 metadata/_custom_type_script = "uid://mosl5fbjll84"

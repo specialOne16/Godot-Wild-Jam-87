@@ -4,14 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://mh1quh77s5gw" path="res://world/enemy_spawner/enemy_spawner.tscn" id="2_df015"]
 [ext_resource type="PackedScene" uid="uid://b77jx6vgrjkhp" path="res://world/day_night_cycle/day_night_cycle.tscn" id="3_4y3cs"]
 [ext_resource type="PackedScene" uid="uid://du0ivfuf4ixnq" path="res://world/resource/resource_gui.tscn" id="4_cgumk"]
-[ext_resource type="PackedScene" uid="uid://dsxh4q3p0o4xt" path="res://entities/towers/flame_thrower.tscn" id="5_844po"]
-[ext_resource type="PackedScene" uid="uid://cx4x8tv8xh0l1" path="res://entities/towers/mortar_tower.tscn" id="6_ef1bp"]
+[ext_resource type="PackedScene" uid="uid://cinic2jo4wvuf" path="res://entities/towers/ranged_tower.tscn" id="5_844po"]
+[ext_resource type="PackedScene" uid="uid://dsxh4q3p0o4xt" path="res://entities/towers/flame_thrower.tscn" id="6_ef1bp"]
 
 [node name="TestShoot" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("2_844po")]
 unique_name_in_owner = true
 position = Vector2(331, 304)
+bullet_damage = 1.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -36,10 +37,10 @@ world = NodePath("..")
 
 [node name="ResourceGui" parent="CanvasLayer2" instance=ExtResource("4_cgumk")]
 
-[node name="FlameThrower" parent="." instance=ExtResource("5_844po")]
-position = Vector2(317, 513)
-scale = Vector2(0.25, 0.25)
+[node name="RangedTower" parent="." instance=ExtResource("5_844po")]
+position = Vector2(324, 156)
+tower_damage = 50
 
-[node name="Mortar" parent="." instance=ExtResource("6_ef1bp")]
-position = Vector2(303, 100)
-scale = Vector2(0.25, 0.25)
+[node name="FlameThrower" parent="." instance=ExtResource("6_ef1bp")]
+position = Vector2(332, 460)
+tower_damage = 1

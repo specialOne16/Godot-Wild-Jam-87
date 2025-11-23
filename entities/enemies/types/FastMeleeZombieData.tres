@@ -6,5 +6,4 @@
 [resource]
 script = ExtResource("1_gx5ep")
 zombie_damage = 20.0
-move_speed = 300.0
 texture = ExtResource("2_gx5ep")
