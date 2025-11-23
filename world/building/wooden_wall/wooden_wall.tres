@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="Building" load_steps=5 format=3 uid="uid://cegcm30mbu74m"]
 
+[ext_resource type="Texture2D" uid="uid://deivsuhdkc5qq" path="res://Textures/UI/wooden_wall_front.png" id="1_adlf3"]
 [ext_resource type="PackedScene" uid="uid://bg64ogjemrh2m" path="res://world/building/wooden_wall/wooden_wall.tscn" id="1_leaux"]
 [ext_resource type="Script" uid="uid://mosl5fbjll84" path="res://world/building/building.gd" id="2_adlf3"]
-[ext_resource type="Texture2D" uid="uid://dwcew2co30q1l" path="res://icon.svg" id="3_ip7oj"]
 [ext_resource type="Texture2D" uid="uid://cq8c242e8jkvd" path="res://Textures/Objects/walls.png" id="3_leaux"]
 
 [resource]
 script = ExtResource("2_adlf3")
 name = "Wooden Wall"
 wood_cost = 15
-recipe_texture = ExtResource("3_ip7oj")
+recipe_texture = ExtResource("1_adlf3")
 texture = ExtResource("3_leaux")
 texture_frame_size = Vector2i(6, 6)
 texture_frame = 24

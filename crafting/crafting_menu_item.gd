@@ -23,16 +23,17 @@ func _ready() -> void:
 	stone_value.text = str(building.stone_cost)
 	steel_value.text = str(building.steel_cost)
 	
-	wood_container.visible = building.wood_cost != 0
-	stone_container.visible = building.stone_cost != 0
-	steel_container.visible = building.steel_cost != 0
+	wood_container.modulate = Color.WHITE if building.wood_cost != 0 else Color.TRANSPARENT
+	stone_container.modulate = Color.WHITE if building.stone_cost != 0 else Color.TRANSPARENT
+	steel_container.modulate = Color.WHITE if building.steel_cost != 0 else Color.TRANSPARENT
 	
 	texture_rect.texture = building.recipe_texture
 	
-	update_resource(0)
-	ResourceManager.wood_changed.connect(update_resource)
-	ResourceManager.stone_changed.connect(update_resource)
-	ResourceManager.steel_changed.connect(update_resource)
+	if not Engine.is_editor_hint():
+		update_resource(0)
+		ResourceManager.wood_changed.connect(update_resource)
+		ResourceManager.stone_changed.connect(update_resource)
+		ResourceManager.steel_changed.connect(update_resource)
 
 func _on_button_pressed() -> void:
 	EventBus.craft_building.emit(building)

@@ -9,7 +9,8 @@ class_name Player
 @onready var bullet_spawn: Marker2D = %bulletspawn
 @onready var zombie_attack: Attack = %ZombieAttack
 @onready var bullet_interval: Timer = %bulletInterval
-@onready var gun: Sprite2D = %gun
+@onready var gun_container: Node2D = $GunContainer
+@onready var gun: AnimatedSprite2D = %gun
 @onready var player_hp_bar: TextureProgressBar = %PlayerHPBar
 @onready var player_anim: BaseAnim = $PlayerAnim
 
@@ -20,6 +21,8 @@ var nearest_enemy_direction : Vector2
 var nearest_enemy_rotation: float
 var nearest_enemy_body : Node2D
 var enemies : Array
+
+var attacking := false
 
 var current_health = max_health :
 	set(value):
@@ -42,8 +45,8 @@ func _process(_delta: float) -> void:
 		bullet_interval.stop()
 		
 	if is_enemy_inside == true:
-		nearest_enemy_direction = (nearest_enemy_body.global_position - gun.global_position).normalized()
-		gun.look_at(nearest_enemy_body.global_position)
+		nearest_enemy_direction = (nearest_enemy_body.global_position - global_position).normalized()
+		gun_container.look_at(nearest_enemy_body.global_position)
 
 func damaged(amount: float):
 	current_health -= amount
@@ -69,6 +72,10 @@ func enemy_outside(body: Node2D) -> void:
 	enemies.erase(body)
 	
 func get_input():
+	if attacking:
+		velocity = Vector2.ZERO
+		return
+	
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
 	if input_direction:
@@ -84,6 +91,8 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func fire_bullet() -> void:
+	gun.play("attack")
+	
 	var bullet: Bullet = bulletScene.instantiate()
 	bullet.direction = nearest_enemy_direction.normalized()
 	bullet.global_position = bullet_spawn.global_position

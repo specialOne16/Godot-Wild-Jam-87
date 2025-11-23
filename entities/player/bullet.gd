@@ -2,14 +2,18 @@ extends Area2D
 class_name Bullet
 
 @onready var bullet_alive: Timer = %bullet_alive
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 @export var bullet_speed := 800
 @export var damage := 60.0
+@export var texture: Texture2D = preload("uid://bs5c1bo46xpm1")
 
 var direction := Vector2.ZERO
 
 func _ready():
 	bullet_start()
+	sprite_2d.texture = texture
+	rotation = direction.angle()
 	bullet_alive.connect("timeout", destroy_bullet)
 	self.connect("body_entered", _on_body_entered)
 	pass

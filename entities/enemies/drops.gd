@@ -1,21 +1,38 @@
 extends Area2D
 class_name Drops
 
+const STEEL = preload("uid://cics8bnvo8mlp")
+const STONE = preload("uid://dd1mo8jc4rxip")
+const WOOD = preload("uid://dfmxchwxe1jvu")
+
+@onready var sprite_2d: Sprite2D = $Sprite2D
+
 var direction
-var drop = ResourceManager.player_upgrade[randi() % ResourceManager.player_upgrade.size()]
+var drop
 
 func _ready() -> void:
+	if not drop: drop = ResourceManager.player_upgrade[randi() % ResourceManager.player_upgrade.size()]
+	
 	if drop == 'wood':
-		self.modulate = '#c33502'
+		self.modulate = Color.WHITE
+		sprite_2d.texture = WOOD
 	if drop == 'steel':
-		self.modulate = '#fed9e4'
+		self.modulate = Color.WHITE
+		sprite_2d.texture = STEEL
 	if drop == 'stone':
-		self.modulate = '#b99e27'
+		self.modulate = Color.WHITE
+		sprite_2d.texture = STONE
 	if drop == 'hp':
 		self.modulate = '#00e1d0'
 	if drop == 'damage':
 		self.modulate = '#ef0012'
-		
+	
+	connect("body_entered",orb_pickup)
+	
+	if drop == "wood" or drop == "steel" or drop == "stone": 
+		self.scale = Vector2.ONE / 2
+		return
+	
 	self.modulate.a = 0
 	self.scale = Vector2.ZERO
 	#TWEEN
@@ -24,9 +41,7 @@ func _ready() -> void:
 
 	tween.tween_property(self, "scale", Vector2(.5, .5), 1).set_trans(Tween.TRANS_SINE)
 	tween.tween_property(self, "modulate:a", 1.0, 0.25)
-	
-	connect("body_entered",orb_pickup)
-	
+
 func orb_pickup(body: Node2D) -> void:
 	if not body is Player: return
 	

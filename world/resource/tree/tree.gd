@@ -6,12 +6,17 @@ var spawner: ResourceSpawner
 
 const NORMAL_TREE = preload("uid://byo2wuhixleya")
 const PINE_TREE = preload("uid://3frhexceesbi")
+const DROPS = preload("uid://b8v3hshx5sa78")
 
 func _ready() -> void:
 	sprite_2d.texture = [NORMAL_TREE, PINE_TREE].pick_random()
 	sprite_2d.flip_h = randi_range(0, 1) == 0
 
 func damaged():
-	ResourceManager.current_wood += 10
+	var drops : Drops = DROPS.instantiate()
+	drops.global_position = self.global_position
+	drops.drop = "wood"
+	get_tree().current_scene.call_deferred("add_child",drops)
+	
 	spawner.spawned = false
 	queue_free()

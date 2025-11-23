@@ -72,5 +72,7 @@ z_index = 1
 morning_timer_time = 5.0
 
 [node name="ResourceGui" parent="CanvasLayer" instance=ExtResource("3_mmdvd")]
+z_index = 2
 
 [node name="CraftingMenu" parent="CanvasLayer" instance=ExtResource("4_fn3g3")]
+z_index = 2
