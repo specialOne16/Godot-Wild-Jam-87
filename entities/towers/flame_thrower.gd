@@ -1,4 +1,4 @@
-extends Area2D
+extends StaticBody2D
 class_name FlameThrower
 
 @export var tower_damage: float = 10
@@ -11,6 +11,7 @@ class_name FlameThrower
 @onready var flame: Flame = %Flame
 @onready var flame_thrower_sprite: AnimatedSprite2D = %flameThrowerSprite
 @onready var flame_pivot: Node2D = %FlamePivot
+@onready var area_2d: Area2D = $Area2D
 
 
 var is_enemy_inside : bool = false
@@ -26,8 +27,8 @@ func _ready() -> void:
 	connect_signals()
 
 func connect_signals() -> void:
-	connect("body_entered",enemy_inside)
-	connect("body_exited",enemy_outside)
+	area_2d.connect("body_entered",enemy_inside)
+	area_2d.connect("body_exited",enemy_outside)
 	EventBus.connect("zombieDead",zombie_died)
 	flame_thrower_fire_rate.timeout.connect(fire_bullet)
 

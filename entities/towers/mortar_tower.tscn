@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cx4x8tv8xh0l1"]
+[gd_scene load_steps=8 format=3 uid="uid://cx4x8tv8xh0l1"]
 
 [ext_resource type="Script" uid="uid://dtpxw5qgkbu3t" path="res://entities/towers/mortar_tower.gd" id="1_15o34"]
 [ext_resource type="Texture2D" uid="uid://b6q81yko53wa3" path="res://Textures/Weapons/Weapons/mortar_shoot.png" id="2_15o34"]
@@ -88,7 +88,10 @@ colors = PackedColorArray(0, 1, 0, 1)
 gradient = SubResource("Gradient_bls4j")
 height = 3
 
-[node name="Mortar" type="Area2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_15o34"]
+radius = 86.833176
+
+[node name="Mortar" type="StaticBody2D"]
 collision_layer = 64
 collision_mask = 99
 script = ExtResource("1_15o34")
@@ -101,16 +104,20 @@ animation = &"mortar_fire"
 frame = 8
 frame_progress = 1.0
 
-[node name="MortarDetectionRange" type="CollisionShape2D" parent="."]
+[node name="MortarFireRate" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 99
+
+[node name="MortarDetectionRange" type="CollisionShape2D" parent="Area2D"]
 unique_name_in_owner = true
 shape = SubResource("CircleShape2D_sh73x")
 
-[node name="MortarDamageRange" type="CollisionShape2D" parent="."]
+[node name="MortarDamageRange" type="CollisionShape2D" parent="Area2D"]
 unique_name_in_owner = true
 shape = SubResource("CircleShape2D_wriij")
-
-[node name="MortarFireRate" type="Timer" parent="."]
-unique_name_in_owner = true
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -129,3 +136,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_progress = SubResource("GradientTexture2D_15o34")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_15o34")

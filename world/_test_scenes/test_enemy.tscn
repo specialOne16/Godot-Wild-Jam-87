@@ -1,13 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://q6c6c80l8tnf"]
+[gd_scene load_steps=5 format=3 uid="uid://q6c6c80l8tnf"]
 
 [ext_resource type="PackedScene" uid="uid://dnrx1cp8p8huy" path="res://entities/player/player.tscn" id="1_bkthq"]
 [ext_resource type="PackedScene" uid="uid://devxha63j6w0k" path="res://entities/enemies/base/base_enemy.tscn" id="2_dopgm"]
+[ext_resource type="Resource" uid="uid://vjybrkwxjgv8" path="res://entities/enemies/types/HeavyMeleeZombieData.tres" id="3_i6sj1"]
+[ext_resource type="PackedScene" uid="uid://cinic2jo4wvuf" path="res://entities/towers/ranged_tower.tscn" id="4_i6sj1"]
 
 [node name="TestEnemy" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_bkthq")]
-bullet_damage = 20.0
+bullet_damage = 1.0
 
 [node name="BaseEnemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_dopgm")]
 position = Vector2(314, 1)
 player = NodePath("../Player")
+data = ExtResource("3_i6sj1")
+
+[node name="RangedTower" parent="." instance=ExtResource("4_i6sj1")]
+tower_damage = 1.0
