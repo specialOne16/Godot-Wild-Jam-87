@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ZombieData" load_steps=3 format=3 uid="uid://dd6b64bybbe8m"]
+
+[ext_resource type="Script" uid="uid://b8ia7r3or2h7j" path="res://entities/enemies/types/ZombieData.gd" id="1_7jkv8"]
+[ext_resource type="PackedScene" uid="uid://dcx01nromvs0j" path="res://Textures/Anims/slow_melee_zombie_anim.tscn" id="2_bf8do"]
+
+[resource]
+script = ExtResource("1_7jkv8")
+texture = ExtResource("2_bf8do")

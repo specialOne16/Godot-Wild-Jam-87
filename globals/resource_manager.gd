@@ -25,8 +25,5 @@ var current_steel: int = 0 :
 		current_steel = value
 		steel_changed.emit(value)
 
-const player_data_rm : PlayerData = preload("uid://b6otg17jy1a75") as PlayerData
-const zombie_data_rm : ZombieData = preload("uid://dd6b64bybbe8m") as ZombieData
-
-
 var enemy_list: Array
+var player_upgrade: Array =['wood','wood','wood','wood','wood','stone','stone','stone','steel','steel', 'hp','hp','hp','hp','damage','damage']

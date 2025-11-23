@@ -1,6 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://devxha63j6w0k"]
+[gd_scene load_steps=10 format=3 uid="uid://devxha63j6w0k"]
 
 [ext_resource type="Script" uid="uid://pfa3i7hrkhc" path="res://entities/enemies/base/base_enemy.gd" id="1_8xa7x"]
+[ext_resource type="Script" uid="uid://bwxyngoubhotg" path="res://state_machine/state_machine.gd" id="2_6pcee"]
+[ext_resource type="Script" uid="uid://dup4k7lgho64i" path="res://entities/enemies/state/zombie_idle_state.gd" id="3_stjds"]
+[ext_resource type="Script" uid="uid://brta4mjxw0jgu" path="res://entities/enemies/state/zombie_move_to_player_state.gd" id="4_4pxks"]
+[ext_resource type="Script" uid="uid://d2p1c7q65a17q" path="res://entities/enemies/state/zombie_attacking_state.gd" id="5_4pxks"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8xa7x"]
 radius = 18.110771
@@ -30,6 +34,7 @@ shape = SubResource("CircleShape2D_8xa7x")
 
 [node name="ZombieRange" type="Area2D" parent="."]
 unique_name_in_owner = true
+collision_layer = 0
 
 [node name="ZombieAttackArea" type="CollisionShape2D" parent="ZombieRange"]
 unique_name_in_owner = true
@@ -55,3 +60,20 @@ texture_progress = SubResource("GradientTexture2D_stjds")
 
 [node name="ZombieDamageTimer" type="Timer" parent="."]
 unique_name_in_owner = true
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_6pcee")
+initial_state = NodePath("ZombieIdleState")
+metadata/_custom_type_script = "uid://bwxyngoubhotg"
+
+[node name="ZombieIdleState" type="Node" parent="StateMachine"]
+script = ExtResource("3_stjds")
+metadata/_custom_type_script = "uid://dup4k7lgho64i"
+
+[node name="ZombieMoveToPlayerState" type="Node" parent="StateMachine"]
+script = ExtResource("4_4pxks")
+metadata/_custom_type_script = "uid://brta4mjxw0jgu"
+
+[node name="ZombieAttackingState" type="Node" parent="StateMachine"]
+script = ExtResource("5_4pxks")
+metadata/_custom_type_script = "uid://d2p1c7q65a17q"

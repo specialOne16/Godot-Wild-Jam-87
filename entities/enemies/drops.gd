@@ -2,9 +2,7 @@ extends Area2D
 class_name Drops
 
 var direction
-var player_upgrade : Array = ResourceManager.zombie_data_rm.drops_list_items
-var drop = player_upgrade[randi() % player_upgrade.size()]
-var player_data : PlayerData = ResourceManager.player_data_rm
+var drop = ResourceManager.player_upgrade[randi() % ResourceManager.player_upgrade.size()]
 
 func _ready() -> void:
 	if drop == 'wood':
@@ -29,7 +27,17 @@ func _ready() -> void:
 	
 	connect("body_entered",orb_pickup)
 	
-func orb_pickup(_body: Node2D) -> void:
+func orb_pickup(body: Node2D) -> void:
+	if not body is Player: return
+	
+	var orb_pickup_tween = get_tree().create_tween()
+	orb_pickup_tween.set_parallel(true)
+	orb_pickup_tween.tween_property(self, "scale", Vector2(0, 0), .5)
+	orb_pickup_tween.tween_property(self, "modulate:a", 0.0, .5).from(1.0)
+	orb_pickup_tween.tween_property(self, "global_position",body.global_position,.5)
+	
+	await orb_pickup_tween.finished
+	
 	if drop == 'wood':
 		ResourceManager.current_wood += 10
 	elif drop == 'steel':
@@ -37,16 +45,8 @@ func orb_pickup(_body: Node2D) -> void:
 	elif drop == 'stone':
 		ResourceManager.current_stone += 10
 	elif drop == 'hp':
-		player_data.player_health += 10
+		body.current_health += 10
 	elif drop == 'damage':
-		player_data.weapon_damage += 10
-
+		body.bullet_damage += 10
 	
-	var orb_pickup_tween = get_tree().create_tween()
-	orb_pickup_tween.set_parallel(true)
-	orb_pickup_tween.tween_property(self, "scale", Vector2(0, 0), .5)
-	orb_pickup_tween.tween_property(self, "modulate:a", 0.0, .5).from(1.0)
-	orb_pickup_tween.tween_property(self, "global_position",_body.global_position,.5)
-	
-	await orb_pickup_tween.finished 
 	queue_free()
