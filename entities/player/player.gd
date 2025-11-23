@@ -50,7 +50,8 @@ func damaged(amount: float):
 	player_hp_bar.value = current_health
 	
 	if current_health <= 0:
-		queue_free()
+		# TODO show end scene
+		get_tree().reload_current_scene()
 
 func connect_signals() -> void:
 	zombie_attack.zombie_entered.connect(enemy_inside)
