@@ -35,13 +35,15 @@ func _ready() -> void:
 	player_hp_bar.max_value = max_health
 	player_hp_bar.value = current_health
 	
+	bullet_interval.start()
+	bullet_interval.paused = true
 	connect_signals()
 
 func _process(_delta: float) -> void:
 	
 	if enemies.is_empty():
 		is_enemy_inside = false
-		bullet_interval.stop()
+		bullet_interval.paused = true
 		
 	if is_enemy_inside == true:
 		nearest_enemy_direction = (nearest_enemy_body.global_position - global_position).normalized()
@@ -63,8 +65,9 @@ func connect_signals() -> void:
 
 func enemy_inside(body: Node2D) -> void:
 	enemies.append(body)
-	bullet_interval.start()
+	bullet_interval.paused = false
 	if is_enemy_inside == false:
+		is_enemy_inside = true
 		nearest_enemy_body = get_nearest_enemy()
 	
 func enemy_outside(body: Node2D) -> void:
@@ -92,7 +95,6 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func fire_bullet() -> void:
-	is_enemy_inside = true
 	gun.play("attack")
 	shoot_sfx.play()
 	var bullet: Bullet = bulletScene.instantiate()
