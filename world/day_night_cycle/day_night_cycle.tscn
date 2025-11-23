@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b77jx6vgrjkhp"]
+[gd_scene load_steps=3 format=3 uid="uid://b77jx6vgrjkhp"]
 
 [ext_resource type="Script" uid="uid://b3lnpbf7n88qu" path="res://world/day_night_cycle/day_night_cycle.gd" id="1_1bakr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bakr"]
+bg_color = Color(0, 0, 0, 0.3)
 
 [node name="DayNightCycle" type="Control"]
 layout_mode = 3
@@ -13,13 +16,13 @@ script = ExtResource("1_1bakr")
 night_timer_time = 3.0
 
 [node name="DarkOverlay" type="Panel" parent="."]
-modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1bakr")
 
 [node name="MorningTimer" type="Timer" parent="."]
 unique_name_in_owner = true

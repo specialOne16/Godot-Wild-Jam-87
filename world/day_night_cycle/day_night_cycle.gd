@@ -21,6 +21,8 @@ func timer_init():
 	night_timer.wait_time = night_timer_time
 	morning_timer.timeout.connect(toggle_dark_overlay)
 	night_timer.timeout.connect(toggle_morning_overlay)
+	morning_timer.start()
+	night_timer.start()
 
 func toggle_morning_overlay():
 	day_count += 1
