@@ -1,9 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dnrx1cp8p8huy"]
+[gd_scene load_steps=16 format=3 uid="uid://dnrx1cp8p8huy"]
 
 [ext_resource type="Script" uid="uid://ce4ya7xl5rj20" path="res://entities/player/player.gd" id="1_abrql"]
 [ext_resource type="PackedScene" uid="uid://cwklgo80abtcq" path="res://Textures/Anims/player_anim.tscn" id="2_sglur"]
 [ext_resource type="PackedScene" uid="uid://b5c5eran3em6c" path="res://entities/player/components/attack.tscn" id="3_sglur"]
 [ext_resource type="Texture2D" uid="uid://c1ryy4j31kuw7" path="res://Textures/Weapons/Weapons/shot_gun.png" id="4_bls4j"]
+[ext_resource type="AudioStream" uid="uid://mw6j32dhtd1a" path="res://Sound/SFX/shoot.wav" id="5_fkugw"]
+[ext_resource type="AudioStream" uid="uid://dvad1hpryb4dw" path="res://Sound/SFX/pickup.wav" id="6_8fjmc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sglur"]
 radius = 18.439089
@@ -125,6 +127,12 @@ grow_vertical = 2
 texture_progress = SubResource("GradientTexture2D_fkugw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Shoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_fkugw")
+
+[node name="Pickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_8fjmc")
 
 [connection signal="body_entered" from="ZombieAttack" to="ZombieAttack" method="_on_body_entered"]
 [connection signal="body_exited" from="ZombieAttack" to="ZombieAttack" method="_on_body_exited"]

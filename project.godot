@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 EventBus="*res://globals/event_bus.gd"
 ResourceManager="*res://globals/resource_manager.gd"
+MusicPlayer="*res://Sound/music_player.tscn"
 
 [display]
 

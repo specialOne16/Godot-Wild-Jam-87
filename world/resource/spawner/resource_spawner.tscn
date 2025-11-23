@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnh1ucwwrkajw"]
+[gd_scene load_steps=4 format=3 uid="uid://dnh1ucwwrkajw"]
 
 [ext_resource type="Script" uid="uid://rbdxewe465r2" path="res://world/resource/spawner/resource_spawner.gd" id="1_dv5xu"]
+[ext_resource type="AudioStream" uid="uid://cfqqy4xhkjrcq" path="res://Sound/SFX/resource_attack.wav" id="2_qsx3p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dv5xu"]
 size = Vector2(32, 32)
@@ -13,3 +14,6 @@ script = ExtResource("1_dv5xu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dv5xu")
 debug_color = Color(0.6935578, 0.4913866, 0.19825712, 0.41960785)
+
+[node name="ResourceAttack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qsx3p")

@@ -13,6 +13,8 @@ class_name Player
 @onready var gun: AnimatedSprite2D = %gun
 @onready var player_hp_bar: TextureProgressBar = %PlayerHPBar
 @onready var player_anim: BaseAnim = $PlayerAnim
+@onready var shoot_sfx: AudioStreamPlayer = $Shoot
+@onready var pickup_sfx: AudioStreamPlayer = $Pickup
 
 var bulletScene : PackedScene = preload("uid://c0xqahtmvo8kf")
 
@@ -53,8 +55,7 @@ func damaged(amount: float):
 	player_hp_bar.value = current_health
 	
 	if current_health <= 0:
-		# TODO show end scene
-		get_tree().reload_current_scene.call_deferred()
+		EventBus.player_died.emit()
 
 func connect_signals() -> void:
 	zombie_attack.zombie_entered.connect(enemy_inside)
@@ -92,6 +93,7 @@ func _physics_process(_delta):
 
 func fire_bullet() -> void:
 	gun.play("attack")
+	shoot_sfx.play()
 	
 	var bullet: Bullet = bulletScene.instantiate()
 	bullet.direction = nearest_enemy_direction.normalized()

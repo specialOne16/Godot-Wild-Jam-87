@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3lgh4hx0pe6"]
+
+[ext_resource type="Script" uid="uid://c8sv4ydfc5rm0" path="res://Sound/music_player.gd" id="1_outg6"]
+[ext_resource type="AudioStream" uid="uid://bb7ljpaoo3ux5" path="res://Sound/Music/Day Music.wav" id="2_ebyrn"]
+[ext_resource type="AudioStream" uid="uid://6mg7cbf67q2u" path="res://Sound/Music/Death.wav" id="3_ee1tx"]
+[ext_resource type="AudioStream" uid="uid://bcku5quxcpx8g" path="res://Sound/Music/Night Song.wav" id="4_sbsnn"]
+
+[node name="MusicPlayer" type="Node"]
+process_mode = 3
+script = ExtResource("1_outg6")
+
+[node name="DayMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ebyrn")
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ee1tx")
+
+[node name="NightSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_sbsnn")
