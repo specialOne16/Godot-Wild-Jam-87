@@ -13,6 +13,9 @@ const ZOMBIE_SPAWNER_COUNT = 10
 @onready var player: Player = %Player
 
 func _ready() -> void:
+	MusicPlayer.death.stop()
+	MusicPlayer.day_music.play()
+	
 	player.position = MAP_SIZE / 2
 	init_resource_spawner()
 	init_zombie_spawner()
@@ -40,5 +43,9 @@ func init_zombie_spawner():
 		add_child(spawner)
 
 func end_game():
+	MusicPlayer.day_music.stop()
+	MusicPlayer.night_song.stop()
+	MusicPlayer.death.play()
+	
 	get_tree().paused = true
 	%EndGameMenu.visible = true

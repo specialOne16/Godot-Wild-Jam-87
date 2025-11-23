@@ -13,6 +13,8 @@ class_name Player
 @onready var gun: AnimatedSprite2D = %gun
 @onready var player_hp_bar: TextureProgressBar = %PlayerHPBar
 @onready var player_anim: BaseAnim = $PlayerAnim
+@onready var shoot_sfx: AudioStreamPlayer = $Shoot
+@onready var pickup_sfx: AudioStreamPlayer = $Pickup
 
 var bulletScene : PackedScene = preload("uid://c0xqahtmvo8kf")
 
@@ -91,6 +93,7 @@ func _physics_process(_delta):
 
 func fire_bullet() -> void:
 	gun.play("attack")
+	shoot_sfx.play()
 	
 	var bullet: Bullet = bulletScene.instantiate()
 	bullet.direction = nearest_enemy_direction.normalized()
