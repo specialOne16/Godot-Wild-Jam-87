@@ -47,5 +47,7 @@ func end_game():
 	MusicPlayer.night_song.stop()
 	MusicPlayer.death.play()
 	
+	$CanvasLayer/CraftingMenu.panel.visible = false
+	
 	get_tree().paused = true
 	%EndGameMenu.visible = true
