@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://bb7ljpaoo3ux5"
+uid="uid://bbed66w05ciio"
 path="res://.godot/imported/Day Music.wav-7df15795ca52c2fe0289004d8b80cf40.sample"
 
 [deps]
@@ -18,7 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop_mode=1
+edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
 compress/mode=2
