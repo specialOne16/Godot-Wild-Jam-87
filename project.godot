@@ -13,7 +13,8 @@ config_version=5
 config/name="Godot Wild Jam 87"
 run/main_scene="uid://ciwqp0abhredf"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/image="uid://b32nt5nn0hvvi"
+config/icon="uid://b32nt5nn0hvvi"
 
 [autoload]
 
