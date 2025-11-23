@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://d37miegg8k42b"]
+[gd_scene load_steps=11 format=4 uid="uid://d37miegg8k42b"]
 
 [ext_resource type="PackedScene" uid="uid://dnrx1cp8p8huy" path="res://entities/player/player.tscn" id="1_6xmxd"]
 [ext_resource type="Script" uid="uid://biyyc22lw3smp" path="res://world/world.gd" id="1_h5o24"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://du0ivfuf4ixnq" path="res://world/resource/resource_gui.tscn" id="3_mmdvd"]
 [ext_resource type="PackedScene" uid="uid://ch7uknc2sbsuk" path="res://crafting/crafting_menu.tscn" id="4_fn3g3"]
 [ext_resource type="PackedScene" uid="uid://c3aa1scxrd44c" path="res://world/building/builder.tscn" id="4_sc4t8"]
+[ext_resource type="PackedScene" uid="uid://bvdou5wcx05tn" path="res://menu/end_game_menu.tscn" id="8_4papg"]
 [ext_resource type="Texture2D" uid="uid://0dxfqf7o4ni1" path="res://Textures/Objects/ground.png" id="8_ai45w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fn3g3"]
@@ -77,3 +78,7 @@ z_index = 2
 
 [node name="CraftingMenu" parent="CanvasLayer" instance=ExtResource("4_fn3g3")]
 z_index = 2
+
+[node name="EndGameMenu" parent="CanvasLayer" instance=ExtResource("8_4papg")]
+unique_name_in_owner = true
+visible = false

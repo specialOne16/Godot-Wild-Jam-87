@@ -16,6 +16,8 @@ func _ready() -> void:
 	player.position = MAP_SIZE / 2
 	init_resource_spawner()
 	init_zombie_spawner()
+	
+	EventBus.player_died.connect(end_game)
 
 func init_resource_spawner():
 	for x in roundi(MAP_SIZE.x / CHUNK_SIZE.x): for y in roundi(MAP_SIZE.y / CHUNK_SIZE.y):
@@ -36,3 +38,7 @@ func init_zombie_spawner():
 		spawner.player = player
 		spawner.spawner_index = i
 		add_child(spawner)
+
+func end_game():
+	get_tree().paused = true
+	%EndGameMenu.visible = true
