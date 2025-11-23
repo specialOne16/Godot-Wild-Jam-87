@@ -126,6 +126,15 @@ sprite_frames = SubResource("SpriteFrames_bsqrh")
 animation = &"fire_end"
 offset = Vector2(0, -35)
 
+[node name="flameImage" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+visible = false
+rotation = 1.5707964
+scale = Vector2(3.0414672, 3.8373573)
+sprite_frames = SubResource("SpriteFrames_bsqrh")
+animation = &"fire_end"
+offset = Vector2(0, -35)
+
 [node name="flameDuration" type="Timer" parent="."]
 unique_name_in_owner = true
 

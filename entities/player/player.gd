@@ -13,6 +13,8 @@ class_name Player
 @onready var gun: AnimatedSprite2D = %gun
 @onready var player_hp_bar: TextureProgressBar = %PlayerHPBar
 @onready var player_anim: BaseAnim = $PlayerAnim
+@onready var shoot_sfx: AudioStreamPlayer = $Shoot
+@onready var pickup_sfx: AudioStreamPlayer = $Pickup
 
 var bulletScene : PackedScene = preload("uid://c0xqahtmvo8kf")
 
@@ -37,9 +39,6 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	
-	if enemies.is_empty() == false:
-		nearest_enemy_body = get_nearest_enemy()
-	
 	if enemies.is_empty():
 		is_enemy_inside = false
 		bullet_interval.stop()
@@ -53,8 +52,7 @@ func damaged(amount: float):
 	player_hp_bar.value = current_health
 	
 	if current_health <= 0:
-		# TODO show end scene
-		get_tree().reload_current_scene.call_deferred()
+		EventBus.player_died.emit()
 
 func connect_signals() -> void:
 	zombie_attack.zombie_entered.connect(enemy_inside)
@@ -65,11 +63,13 @@ func connect_signals() -> void:
 
 func enemy_inside(body: Node2D) -> void:
 	enemies.append(body)
-	is_enemy_inside = true
 	bullet_interval.start()
+	if is_enemy_inside == false:
+		nearest_enemy_body = get_nearest_enemy()
 	
 func enemy_outside(body: Node2D) -> void:
 	enemies.erase(body)
+	nearest_enemy_body = get_nearest_enemy()
 	
 func get_input():
 	if attacking:
@@ -85,20 +85,29 @@ func get_input():
 
 func zombie_died(body: Node2D) -> void:
 	enemies.erase(body)
+	nearest_enemy_body = get_nearest_enemy()
 
 func _physics_process(_delta):
 	get_input()
 	move_and_slide()
 
 func fire_bullet() -> void:
+	is_enemy_inside = true
 	gun.play("attack")
-	
+	shoot_sfx.play()
 	var bullet: Bullet = bulletScene.instantiate()
 	bullet.direction = nearest_enemy_direction.normalized()
 	bullet.global_position = bullet_spawn.global_position
 	bullet.damage = bullet_damage
 	bullet.set_collision_mask_value(2, true)
 	get_tree().current_scene.call_deferred("add_child",bullet)
+
+
+
+
+
+
+
 
 func get_nearest_enemy():
 	if enemies.is_empty():

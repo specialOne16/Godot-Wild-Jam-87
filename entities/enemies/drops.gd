@@ -53,6 +53,8 @@ func orb_pickup(body: Node2D) -> void:
 	
 	await orb_pickup_tween.finished
 	
+	body.pickup_sfx.play()
+	
 	if drop == 'wood':
 		ResourceManager.current_wood += 10
 	elif drop == 'steel':

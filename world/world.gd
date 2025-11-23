@@ -10,12 +10,22 @@ const RESOURCE_PER_CHUNK = 3
 
 const ZOMBIE_SPAWNER_COUNT = 10
 
+@onready var day_night_cycle: DayNightCycle = %DayNightCycle
+
+
 @onready var player: Player = %Player
 
 func _ready() -> void:
+	MusicPlayer.death.stop()
+	MusicPlayer.day_music.play()
+	
 	player.position = MAP_SIZE / 2
 	init_resource_spawner()
 	init_zombie_spawner()
+	
+	EventBus.player_died.connect(end_game)
+	
+	EventBus.night_time_decay.connect(apply_damage_to_children)
 
 func init_resource_spawner():
 	for x in roundi(MAP_SIZE.x / CHUNK_SIZE.x): for y in roundi(MAP_SIZE.y / CHUNK_SIZE.y):
@@ -36,3 +46,31 @@ func init_zombie_spawner():
 		spawner.player = player
 		spawner.spawner_index = i
 		add_child(spawner)
+
+func end_game():
+	MusicPlayer.day_music.stop()
+	MusicPlayer.night_song.stop()
+	MusicPlayer.death.play()
+	
+	$CanvasLayer/CraftingMenu.panel.visible = false
+	
+	get_tree().paused = true
+	%EndGameMenu.visible = true
+
+
+func apply_damage_to_children(damage_amount: int, root: Node = self):
+	for child in root.get_children():
+		# Recursively check children-of-children
+		apply_damage_to_children(damage_amount, child)
+
+		# Skip groups you don't want to damage
+		if child.is_in_group("enemies"): 
+			continue
+		if child.is_in_group("walls"): 
+			continue
+		if child.is_in_group("objects"):
+			continue
+
+		# Apply damage if the node has a damaged() method
+		if child.has_method("damaged"):
+			child.damaged(damage_amount)
