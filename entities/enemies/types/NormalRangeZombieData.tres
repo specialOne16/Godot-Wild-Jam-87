@@ -5,7 +5,8 @@
 
 [resource]
 script = ExtResource("1_vomte")
-zombie_damage = 20.0
-move_speed = 20.0
+zombie_health = 80.0
+zombie_damage = 30.0
+move_speed = 50.0
 is_melee = false
 texture = ExtResource("2_vomte")

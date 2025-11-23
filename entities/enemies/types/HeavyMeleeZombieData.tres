@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_ig4px")
-zombie_health = 250.0
-move_speed = 50.0
+zombie_health = 400.0
+zombie_damage = 10.0
+move_speed = 40.0
 texture = ExtResource("2_ig4px")

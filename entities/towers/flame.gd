@@ -3,7 +3,7 @@ class_name Flame
 
 var direction := Vector2.ZERO
 
-@export var fire_damage : = 80
+var fire_damage 
 @onready var flame_duration: Timer = %flameDuration
 @onready var flame_damage_tick: Timer = %flameDamageTick
 @onready var flame_image: AnimatedSprite2D = %flameImage
