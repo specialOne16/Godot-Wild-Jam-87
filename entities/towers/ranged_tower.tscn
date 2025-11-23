@@ -1,13 +1,101 @@
-[gd_scene load_steps=7 format=3 uid="uid://cinic2jo4wvuf"]
+[gd_scene load_steps=18 format=3 uid="uid://cinic2jo4wvuf"]
 
-[ext_resource type="Texture2D" uid="uid://dwcew2co30q1l" path="res://icon.svg" id="1_2ktyk"]
 [ext_resource type="Script" uid="uid://dy78rw4ryl71k" path="res://entities/towers/ranged_tower.gd" id="1_wriij"]
+[ext_resource type="Texture2D" uid="uid://cfdsu05i4b8po" path="res://Textures/Weapons/Weapons/cannon.png" id="2_wriij"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sh73x"]
+atlas = ExtResource("2_wriij")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4n58"]
+atlas = ExtResource("2_wriij")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onqte"]
+atlas = ExtResource("2_wriij")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_014vy"]
+atlas = ExtResource("2_wriij")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eevqn"]
+atlas = ExtResource("2_wriij")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nunoe"]
+atlas = ExtResource("2_wriij")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uoyfg"]
+atlas = ExtResource("2_wriij")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_db8nx"]
+atlas = ExtResource("2_wriij")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kr4x4"]
+atlas = ExtResource("2_wriij")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yt4w"]
+atlas = ExtResource("2_wriij")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6m5dq"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"canon_dying",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"canon_hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sh73x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4n58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onqte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_014vy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eevqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nunoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uoyfg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_db8nx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kr4x4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yt4w")
+}],
+"loop": true,
+"name": &"canon_shoot",
+"speed": 10.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sh73x"]
-radius = 82.764725
+radius = 21.32
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wriij"]
-radius = 755.0325
+radius = 226.01991
 
 [sub_resource type="Gradient" id="Gradient_bls4j"]
 offsets = PackedFloat32Array(0.43571427)
@@ -18,10 +106,22 @@ gradient = SubResource("Gradient_bls4j")
 height = 3
 
 [node name="RangedTower" type="Area2D"]
+collision_layer = 64
+collision_mask = 99
 script = ExtResource("1_wriij")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_2ktyk")
+[node name="CanonPivot" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CanonAnimationSprite" type="AnimatedSprite2D" parent="CanonPivot"]
+unique_name_in_owner = true
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_6m5dq")
+animation = &"canon_shoot"
+
+[node name="RangedFiriningPosition" type="Marker2D" parent="CanonPivot"]
+unique_name_in_owner = true
+position = Vector2(18, 0)
 
 [node name="RangeTowerDamageRange" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
@@ -33,14 +133,15 @@ shape = SubResource("CircleShape2D_wriij")
 
 [node name="towerBulletInterval" type="Timer" parent="."]
 unique_name_in_owner = true
+wait_time = 0.5
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_left = -32.0
-offset_top = -38.0
+offset_top = -25.0
 offset_right = 32.0
-offset_bottom = -34.0
+offset_bottom = -21.0
 
 [node name="RangedTowerHPBar" type="TextureProgressBar" parent="Control"]
 unique_name_in_owner = true

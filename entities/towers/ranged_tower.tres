@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="Building" load_steps=5 format=3 uid="uid://cfm40mgt4pyo5"]
+[gd_resource type="Resource" script_class="Building" load_steps=4 format=3 uid="uid://cfm40mgt4pyo5"]
 
-[ext_resource type="Texture2D" uid="uid://dwcew2co30q1l" path="res://icon.svg" id="1_e4qws"]
+[ext_resource type="Texture2D" uid="uid://df68y6xetamfc" path="res://Textures/Weapons/Weapons/canon_image.png" id="1_e4qws"]
 [ext_resource type="Script" uid="uid://mosl5fbjll84" path="res://world/building/building.gd" id="1_ih1d4"]
-[ext_resource type="Texture2D" uid="uid://coivkx1on52v6" path="res://Textures/Weapons/Weapons/tower.png" id="1_ipven"]
 [ext_resource type="PackedScene" uid="uid://cinic2jo4wvuf" path="res://entities/towers/ranged_tower.tscn" id="2_ipven"]
 
 [resource]
 script = ExtResource("1_ih1d4")
 name = "Cannon"
-recipe_texture = ExtResource("1_ipven")
+wood_cost = 50
+stone_cost = 10
+steel_cost = 5
+recipe_texture = ExtResource("1_e4qws")
 texture = ExtResource("1_e4qws")
 scene = ExtResource("2_ipven")
 metadata/_custom_type_script = "uid://mosl5fbjll84"

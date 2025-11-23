@@ -9,6 +9,8 @@ class_name FlameThrower
 @onready var flame_thrower_hp_bar: TextureProgressBar = %FlameThrowerHPBar
 @onready var flame_thrower_detection_range: CollisionShape2D = %FlameThrowerDetectionRange
 @onready var flame: Flame = %Flame
+@onready var flame_thrower_sprite: AnimatedSprite2D = %flameThrowerSprite
+@onready var flame_pivot: Node2D = %FlamePivot
 
 
 var is_enemy_inside : bool = false
@@ -17,6 +19,7 @@ var nearest_enemy_rotation: float
 var nearest_enemy_body : Node2D
 #enemies list needs to be exclusive to towers and not global as each one will have their own targets.
 var enemies : Array 
+var animation_stopper: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,15 +42,19 @@ func _process(_delta: float) -> void:
 	
 	if enemies.is_empty():
 		is_enemy_inside = false
+		animation_stopper = 0
+		if flame_thrower_fire_rate.is_stopped() == false:
+			animation_stopper = 1
 		flame_thrower_fire_rate.stop()
 		
+	if animation_stopper == 1:
+		flame_thrower_sprite.play("flameend")
+		
 	if is_enemy_inside == true:
-		nearest_enemy_direction = (nearest_enemy_body.global_position - global_position).normalized()
-		#self.look_at(nearest_enemy_body.global_position)
+		nearest_enemy_direction = (nearest_enemy_body.global_position - flame_thrower_sprite.global_position).normalized()
 		nearest_enemy_rotation = nearest_enemy_direction.angle()
-		#self.rotation = nearest_enemy_rotation
 		# 0.1 = rotation speed (lower is slower, higher is faster)
-		rotation = lerp_angle(rotation, nearest_enemy_rotation, 0.01)
+		flame_pivot.rotation = lerp_angle(flame_pivot.rotation, nearest_enemy_rotation, 1)
 		
 
 func zombie_died(body: Node2D) -> void:
@@ -64,6 +71,7 @@ func enemy_inside(body: Node2D) -> void:
 		enemies.append(body)
 		is_enemy_inside = true
 		flame_thrower_fire_rate.start()
+		flame_thrower_sprite.play("flameStart")
 	
 func enemy_outside(body: Node2D) -> void:
 	enemies.erase(body)

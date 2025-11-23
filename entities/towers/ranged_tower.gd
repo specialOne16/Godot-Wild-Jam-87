@@ -8,6 +8,9 @@ class_name RangedTower
 @onready var range_tower_hit_range: CollisionShape2D = %rangeTowerHitRange
 @onready var range_tower_damage_range: CollisionShape2D = %RangeTowerDamageRange
 @onready var ranged_tower_hp_bar: TextureProgressBar = %RangedTowerHPBar
+@onready var canon_animation_sprite: AnimatedSprite2D = %CanonAnimationSprite
+@onready var ranged_firining_position: Marker2D = %RangedFiriningPosition
+@onready var canon_pivot: Node2D = %CanonPivot
 
 
 var bulletScene : PackedScene = preload("uid://c0xqahtmvo8kf")
@@ -40,11 +43,16 @@ func _process(_delta: float) -> void:
 	if enemies.is_empty():
 		is_enemy_inside = false
 		tower_bullet_interval.stop()
+		canon_animation_sprite.stop()
 		
 	if is_enemy_inside == true:
 		nearest_enemy_direction = (nearest_enemy_body.global_position - global_position).normalized()
-		# TODO: We will need the gun position and gun to look at
-		#gun.look_at(nearest_enemy_body.global_position)
+		## TODO: We will need the gun position and gun to look at
+		#canon_pivot.look_at(nearest_enemy_body.global_position)
+		nearest_enemy_direction = (nearest_enemy_body.global_position - ranged_firining_position.global_position).normalized()
+		nearest_enemy_rotation = nearest_enemy_direction.angle()
+		# 0.1 = rotation speed (lower is slower, higher is faster)
+		canon_pivot.rotation = lerp_angle(canon_pivot.rotation, nearest_enemy_rotation, 1)
 
 func zombie_died(body: Node2D) -> void:
 	enemies.erase(body)
@@ -54,13 +62,17 @@ func fire_bullet() -> void:
 	bullet.damage = tower_damage
 	bullet.direction = nearest_enemy_direction.normalized()
 	# bullet will be shot from center of tower. Can place a marker to change it
-	bullet.global_position = global_position
+	bullet.global_position = ranged_firining_position.global_position
 	get_tree().current_scene.call_deferred("add_child",bullet)
 
 func enemy_inside(body: Node2D) -> void:
-	enemies.append(body)
-	is_enemy_inside = true
-	tower_bullet_interval.start()
+	if body.is_in_group("enemies")  :
+		enemies.append(body)
+		is_enemy_inside = true
+		tower_bullet_interval.start()
+	
+	# ANIMATION
+	canon_animation_sprite.play("canon_shoot")
 	
 func enemy_outside(body: Node2D) -> void:
 	enemies.erase(body)
