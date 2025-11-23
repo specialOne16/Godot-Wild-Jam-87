@@ -1,8 +1,8 @@
 extends Area2D
 class_name FlameThrower
 
-@export var tower_damage: int = 10
-@export var tower_hp : int = 100
+@export var tower_damage: float = 10
+@export var tower_hp : float = 100
 
 @onready var flame_thrower_attack_range: CollisionShape2D = %FlameThrowerAttackRange
 @onready var flame_thrower_fire_rate: Timer = %FlameThrowerFireRate
@@ -37,9 +37,7 @@ func _process(_delta: float) -> void:
 	if tower_hp <= 0:
 		queue_free()
 	
-	if enemies.is_empty() == false:
-		nearest_enemy_body = get_nearest_enemy()
-	
+		
 	if enemies.is_empty():
 		is_enemy_inside = false
 		animation_stopper = 0
@@ -54,16 +52,16 @@ func _process(_delta: float) -> void:
 		nearest_enemy_direction = (nearest_enemy_body.global_position - flame_thrower_sprite.global_position).normalized()
 		nearest_enemy_rotation = nearest_enemy_direction.angle()
 		# 0.1 = rotation speed (lower is slower, higher is faster)
-		flame_pivot.rotation = lerp_angle(flame_pivot.rotation, nearest_enemy_rotation, 1)
+		flame_pivot.rotation = lerp_angle(flame_pivot.rotation, nearest_enemy_rotation, 0.02)
 		
 
 func zombie_died(body: Node2D) -> void:
 	enemies.erase(body)
+	nearest_enemy_body = get_nearest_enemy()
 
 
 func fire_bullet() -> void:
 	flame.direction = nearest_enemy_direction.normalized()
-	flame.global_position = global_position
 	flame.fire()
 
 func enemy_inside(body: Node2D) -> void:
@@ -71,12 +69,16 @@ func enemy_inside(body: Node2D) -> void:
 		enemies.append(body)
 		is_enemy_inside = true
 		flame_thrower_fire_rate.start()
+		nearest_enemy_body = get_nearest_enemy()
 		flame_thrower_sprite.play("flameStart")
+		
 	
 func enemy_outside(body: Node2D) -> void:
 	enemies.erase(body)
 
 
+func damaged(damage: float) -> void:
+	tower_hp -= damage
 
 
 

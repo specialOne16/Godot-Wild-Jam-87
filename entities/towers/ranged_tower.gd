@@ -1,8 +1,8 @@
 extends Area2D
 class_name RangedTower
 
-@export var tower_damage: int = 10
-@export var tower_hp: int = 100
+@export var tower_damage: float = 10
+@export var tower_hp: float = 100
 
 @onready var tower_bullet_interval: Timer = %towerBulletInterval
 @onready var range_tower_hit_range: CollisionShape2D = %rangeTowerHitRange
@@ -37,9 +37,9 @@ func _process(_delta: float) -> void:
 	if tower_hp <= 0:
 		queue_free()
 	
-	if enemies.is_empty() == false:
-		nearest_enemy_body = get_nearest_enemy()
-	
+	#if enemies.is_empty() == false:
+		#nearest_enemy_body = get_nearest_enemy()
+	#
 	if enemies.is_empty():
 		is_enemy_inside = false
 		tower_bullet_interval.stop()
@@ -52,10 +52,11 @@ func _process(_delta: float) -> void:
 		nearest_enemy_direction = (nearest_enemy_body.global_position - ranged_firining_position.global_position).normalized()
 		nearest_enemy_rotation = nearest_enemy_direction.angle()
 		# 0.1 = rotation speed (lower is slower, higher is faster)
-		canon_pivot.rotation = lerp_angle(canon_pivot.rotation, nearest_enemy_rotation, 1)
+		canon_pivot.rotation = lerp_angle(canon_pivot.rotation, nearest_enemy_rotation, 0.1)
 
 func zombie_died(body: Node2D) -> void:
 	enemies.erase(body)
+	nearest_enemy_body = get_nearest_enemy()
 
 func fire_bullet() -> void:
 	var bullet := bulletScene.instantiate()
@@ -70,12 +71,27 @@ func enemy_inside(body: Node2D) -> void:
 		enemies.append(body)
 		is_enemy_inside = true
 		tower_bullet_interval.start()
+		nearest_enemy_body = get_nearest_enemy()
 	
 	# ANIMATION
 	canon_animation_sprite.play("canon_shoot")
 	
 func enemy_outside(body: Node2D) -> void:
 	enemies.erase(body)
+
+
+func damaged(damage: float) -> void:
+	tower_hp -= damage
+
+
+
+
+
+
+
+
+
+
 
 func get_nearest_enemy():
 	if enemies.is_empty():

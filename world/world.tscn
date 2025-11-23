@@ -69,9 +69,11 @@ world = NodePath("..")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DayNightCycle" parent="CanvasLayer" instance=ExtResource("2_tcf2h")]
+unique_name_in_owner = true
 z_index = 1
 morning_timer_time = 15.0
 night_timer_time = 20.0
+metadata/_edit_use_anchors_ = true
 
 [node name="ResourceGui" parent="CanvasLayer" instance=ExtResource("3_mmdvd")]
 z_index = 2

@@ -39,8 +39,7 @@ world = NodePath("..")
 
 [node name="RangedTower" parent="." instance=ExtResource("5_844po")]
 position = Vector2(324, 156)
-tower_damage = 50
 
 [node name="FlameThrower" parent="." instance=ExtResource("6_ef1bp")]
 position = Vector2(332, 460)
-tower_damage = 1
+tower_damage = 20

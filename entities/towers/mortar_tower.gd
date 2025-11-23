@@ -33,9 +33,7 @@ func _process(_delta: float) -> void:
 	mortar_tower_hp_bar.value = tower_hp
 	if tower_hp <= 0:
 		queue_free()
-	
-	if enemies.is_empty() == false:
-		nearest_enemy_body = get_nearest_enemy()
+
 	
 	if enemies.is_empty():
 		is_enemy_inside = false
@@ -48,6 +46,7 @@ func _process(_delta: float) -> void:
 
 func zombie_died(body: Node2D) -> void:
 	enemies.erase(body)
+	nearest_enemy_body = get_nearest_enemy()
 
 func fire_bullet() -> void:
 	var shell = mortar_shell.instantiate()
@@ -62,10 +61,14 @@ func enemy_inside(body: Node2D) -> void:
 	if body.is_in_group("enemies")  :
 		enemies.append(body)
 		is_enemy_inside = true
+		nearest_enemy_body = get_nearest_enemy()
 		mortar_fire_rate.start()
 	
 func enemy_outside(body: Node2D) -> void:
 	enemies.erase(body)
+
+func damaged(damage: float) -> void:
+	pass
 
 func get_nearest_enemy():
 	if enemies.is_empty():
